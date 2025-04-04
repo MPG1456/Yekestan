@@ -12,6 +12,7 @@ class User
 
     public:
     User();
+    User(char *username, char *password);
 };
 
 void getUsername(char *username);
