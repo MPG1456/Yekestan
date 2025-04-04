@@ -32,7 +32,7 @@ void getPassword(char *Password)
     doubleCheckPassword(pTemp);
     pLen = pTemp.length();
     for (int i = 0; i <= pLen; ++i)
-    Password[i] = pTemp[i];
+        Password[i] = pTemp[i];
 }
 
 bool checkValidUsername(string username)
@@ -124,13 +124,25 @@ bool checkValidPassword(string password)
 void doubleCheckPassword(string password1)
 {
     string password2;
-    while(1)
+    while (1)
     {
         cout << "Enter Again Your Password: ";
         cin >> password2;
-        if(password2.compare(password1) == 0)
+        if (password2.compare(password1) == 0)
             return;
         else
             cout << "Passwords Don't Match! TRY AGAIN" << endl;
     }
+}
+
+User::User(char *newUsername, char *newPass)
+{
+    int len;
+    len = strlen(newUsername);
+    for (int i = 0; i <= len; ++i)
+        this->username[i] = newUsername[i];
+
+    len = strlen(newPass);
+    for (int i = 0; i <= len; ++i)
+        this->password[i] = newPass[i];
 }
