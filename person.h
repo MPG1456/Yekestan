@@ -3,7 +3,7 @@
 
 #include "user.h"
 
-class Person
+class Person : public User
 {
     private:
     char firstName[50];
