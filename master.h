@@ -9,4 +9,12 @@ class Master : public Person
         Master();
 };
 
+typedef struct
+{
+    Master master;
+    MASTER_LIST *mNext;
+}MASTER_LIST;
+
+void createNewMaster();
+
 #endif
