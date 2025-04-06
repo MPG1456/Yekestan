@@ -6,6 +6,7 @@ using namespace std;
 
 class Master : public Person
 {
+    bool active;
     public:
         Master();
 };

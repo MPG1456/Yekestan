@@ -10,13 +10,6 @@ void checkAdmin(void)
     string tempPassword;
     cout << "Enter Admin Username: ";
     cin >> tempUsername;
-    cout << "Enter Admin Password: ";
-    cin >> tempPassword;
-    if(tempUsername.compare(admin.getUsername()) == 0 && tempPassword.compare(admin.getPassword()) == 0)
-        cout << "Signing in..." << endl << endl;
-    else
-    {
-        cout << "Failed to Sign In" << endl;
+    if(checkPass(admin.getPassword()) == false)
         return;
-    }
 }

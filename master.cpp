@@ -4,7 +4,7 @@ MASTER_LIST *mHead = nullptr;
 
 Master::Master()
 {
-    cout << "New Master Created" << endl;
+    active = false;
 }
 
 struct MASTER_LIST *createNewMaster()
@@ -29,7 +29,7 @@ void masterOperation(struct MASTER_LIST *thisUser)
         return;
 
     if (checkPass(thisUser->master.getPassword()) == false)
-        return;
+        return;    
 }
 
 struct MASTER_LIST *findMaster(void)
@@ -49,3 +49,4 @@ struct MASTER_LIST *findMaster(void)
 
     return mTemp;
 }
+
