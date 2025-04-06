@@ -149,27 +149,13 @@ User::User(char *newUsername, char *newPass)
 
 string User::getUsername(void)
 {
-    int i = 0;
-    string usernameStr;
-    while(username[i] != '\0')
-    {
-        usernameStr[i] = username[i];
-        i++;
-    }
-    usernameStr[i] = '\0';
+    string usernameStr(username);
     return usernameStr;
 }
 
 string User::getPassword(void)
 {
-    int i = 0;
-    string passwordStr;
-    while(password[i] != '\0')
-    {
-        passwordStr[i] = password[i];
-        i++;
-    }
-    passwordStr[i] = '\0';
+    string passwordStr(password);
     return passwordStr;
 }
 
