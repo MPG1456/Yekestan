@@ -26,6 +26,5 @@ bool checkValidUsername(string username);
 bool checkValidPassword(string password);
 void doubleCheckPassword(string password);
 bool checkPass(string tempPass);
-//void freeAllUsers();
 
 #endif
