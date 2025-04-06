@@ -10,18 +10,18 @@ using namespace std;
 class User
 {
     private:
-    char username[11];
-    char password[21];
+    string username;
+    string password;
 
     public:
     User();
-    User(char *username, char *password);
+    User(string username, string password);
     string getUsername();
     string getPassword();
 };
 
-void setUsername(char *username);
-void setPassword(char *password);
+void setUsername(string *username);
+void setPassword(string *password);
 bool checkValidUsername(string username);
 bool checkValidPassword(string password);
 void doubleCheckPassword(string password);

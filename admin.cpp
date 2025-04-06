@@ -1,6 +1,6 @@
 #include "admin.h"
 
-Admin::Admin(void) : User((char *)ADMIN, (char *)ADMIN){}
+Admin::Admin(void) : User(ADMIN, ADMIN){}
 
 Admin admin;
 

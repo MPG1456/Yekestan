@@ -2,37 +2,31 @@
 
 User::User()
 {
-    setUsername(username);
-    setPassword(password);
+    setUsername(&username);
+    setPassword(&password);
 }
 
-void setUsername(char *username)
+void setUsername(string *username)
 {
     string uTemp;
-    int uLen;
     do
     {
-        cout << "Please Enter Username: ";
+        cout << "Please Enter Valid Username: ";
         cin >> uTemp;
     } while (!checkValidUsername(uTemp));
-    uLen = uTemp.length();
-    for (int i = 0; i <= uLen; ++i)
-        username[i] = uTemp[i];
+    *username = uTemp;
 }
 
-void setPassword(char *Password)
+void setPassword(string *password)
 {
     string pTemp;
-    int pLen;
     do
     {
-        cout << "Please Enter Password: ";
+        cout << "Please Enter Valid Password: ";
         cin >> pTemp;
     } while (!checkValidPassword(pTemp));
     doubleCheckPassword(pTemp);
-    pLen = pTemp.length();
-    for (int i = 0; i <= pLen; ++i)
-        Password[i] = pTemp[i];
+    *password = pTemp;
 }
 
 bool checkValidUsername(string username)
@@ -135,28 +129,20 @@ void doubleCheckPassword(string password1)
     }
 }
 
-User::User(char *newUsername, char *newPass)
+User::User(string newUsername, string newPass)
 {
-    int len;
-    len = strlen(newUsername);
-    for (int i = 0; i <= len; ++i)
-        this->username[i] = newUsername[i];
-
-    len = strlen(newPass);
-    for (int i = 0; i <= len; ++i)
-        this->password[i] = newPass[i];
+    username = newUsername;
+    password = newPass;
 }
 
 string User::getUsername(void)
 {
-    string usernameStr(username);
-    return usernameStr;
+    return username;
 }
 
 string User::getPassword(void)
 {
-    string passwordStr(password);
-    return passwordStr;
+    return password;
 }
 
 bool checkPass(string Password)

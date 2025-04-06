@@ -11,11 +11,8 @@ Person::Person()
         cin >> lName;
     } while (checkValidName(fName, lName) == false);
 
-    int fLen = fName.length(), lLen = lName.length();
-    for (int i = 0; i <= fLen; ++i)
-        firstName[i] = fName[i];
-    for (int i = 0; i <= lLen; ++i)
-        lastName[i] = lName[i];
+    firstName = fName;
+    lastName = lName;
 
     cout << "Choose Your Gender(1 for male and 0 for female): ";
     cin >> gender;
@@ -38,3 +35,4 @@ bool checkValidName(string fName, string lName)
         }
     return true;
 }
+

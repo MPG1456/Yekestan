@@ -7,8 +7,8 @@ using namespace std;
 class Person : public User
 {
     private:
-    char firstName[50];
-    char lastName[50];
+    string firstName;
+    string lastName;
     bool gender;
     public:
     Person();
