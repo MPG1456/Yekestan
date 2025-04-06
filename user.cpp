@@ -2,11 +2,11 @@
 
 User::User()
 {
-    getUsername(username);
-    getPassword(password);
+    setUsername(username);
+    setPassword(password);
 }
 
-void getUsername(char *username)
+void setUsername(char *username)
 {
     string uTemp;
     int uLen;
@@ -20,7 +20,7 @@ void getUsername(char *username)
         username[i] = uTemp[i];
 }
 
-void getPassword(char *Password)
+void setPassword(char *Password)
 {
     string pTemp;
     int pLen;
@@ -145,6 +145,32 @@ User::User(char *newUsername, char *newPass)
     len = strlen(newPass);
     for (int i = 0; i <= len; ++i)
         this->password[i] = newPass[i];
+}
+
+string User::getUsername(void)
+{
+    int i = 0;
+    string usernameStr;
+    while(username[i] != '\0')
+    {
+        usernameStr[i] = username[i];
+        i++;
+    }
+    usernameStr[i] = '\0';
+    return usernameStr;
+}
+
+string User::getPassword(void)
+{
+    int i = 0;
+    string passwordStr;
+    while(password[i] != '\0')
+    {
+        passwordStr[i] = password[i];
+        i++;
+    }
+    passwordStr[i] = '\0';
+    return passwordStr;
 }
 
 // void freeAllUsers()

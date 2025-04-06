@@ -16,10 +16,12 @@ class User
     public:
     User();
     User(char *username, char *password);
+    string getUsername();
+    string getPassword();
 };
 
-void getUsername(char *username);
-void getPassword(char *password);
+void setUsername(char *username);
+void setPassword(char *password);
 bool checkValidUsername(string username);
 bool checkValidPassword(string password);
 void doubleCheckPassword(string password);
