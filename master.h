@@ -2,6 +2,7 @@
 #define MASTER_H
 
 #include "person.h"
+using namespace std;
 
 class Master : public Person
 {
@@ -9,11 +10,13 @@ class Master : public Person
         Master();
 };
 
-typedef struct
+struct MASTER_LIST
 {
     Master master;
-    MASTER_LIST *mNext;
-}MASTER_LIST;
+    struct MASTER_LIST *mNext;
+};
+
+extern MASTER_LIST *mHead;
 
 void createNewMaster();
 

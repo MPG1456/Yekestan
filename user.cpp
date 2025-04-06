@@ -146,3 +146,8 @@ User::User(char *newUsername, char *newPass)
     for (int i = 0; i <= len; ++i)
         this->password[i] = newPass[i];
 }
+
+// void freeAllUsers()
+// {
+    
+// }

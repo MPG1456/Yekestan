@@ -9,16 +9,15 @@ Master::Master()
 
 void createNewMaster()
 {
-    MASTER_LIST *mNew = new MASTER_LIST;
+    struct MASTER_LIST *mNew = new struct MASTER_LIST;
     
     if(mHead == nullptr)
         mHead = mNew;
     else
     {
-        MASTER_LIST *mTemp = mHead;
+        struct MASTER_LIST *mTemp = mHead;
         while(mTemp->mNext)
             mTemp = mTemp->mNext;
         mTemp->mNext = mNew;
     }
-
 }

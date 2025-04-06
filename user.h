@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string.h>
 #include <string>
+
 using namespace std;
 
 class User
@@ -22,5 +23,6 @@ void getPassword(char *password);
 bool checkValidUsername(string username);
 bool checkValidPassword(string password);
 void doubleCheckPassword(string password);
+//void freeAllUsers();
 
 #endif

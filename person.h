@@ -2,6 +2,7 @@
 #define PERSON_H
 
 #include "user.h"
+using namespace std;
 
 class Person : public User
 {

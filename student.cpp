@@ -1,6 +1,6 @@
 #include "student.h"
 
-STUDENT_LIST *pHead = nullptr;
+STUDENT_LIST *sHead = nullptr;
 
 Student::Student()
 {
@@ -9,16 +9,15 @@ Student::Student()
 
 void createNewStudent()
 {
-    STUDENT_LIST *pNew = new STUDENT_LIST;
+    struct STUDENT_LIST *sNew = new struct STUDENT_LIST;
     
-    if(pHead == nullptr)
-        pHead = pNew;
+    if(sHead == nullptr)
+        sHead = sNew;
     else
     {
-        STUDENT_LIST *pTemp = pHead;
-        while(pTemp->pNext)
-            pTemp = pTemp->pNext;
-        pTemp->pNext = pNew;
+        struct STUDENT_LIST *sTemp = sHead;
+        while(sTemp->sNext)
+            sTemp = sTemp->sNext;
+        sTemp->sNext = sNew;
     }
-
 }
