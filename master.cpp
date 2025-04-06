@@ -22,3 +22,30 @@ struct MASTER_LIST *createNewMaster()
     }
     return mNew;
 }
+
+void masterOperation(struct MASTER_LIST *thisUser)
+{
+    if (thisUser == nullptr)
+        return;
+
+    if (checkPass(thisUser->master.getPassword()) == false)
+        return;
+}
+
+struct MASTER_LIST *findMaster(void)
+{
+    struct MASTER_LIST *mTemp;
+    string tempUsername;
+    mTemp = mHead;
+    cout << "Enter Username: ";
+    cin >> tempUsername;
+    while (mTemp)
+    {
+        if (mTemp->master.getUsername().compare(tempUsername) == 0)
+            break;
+        else
+            mTemp = mTemp->mNext;
+    }
+
+    return mTemp;
+}

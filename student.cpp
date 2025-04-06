@@ -26,8 +26,10 @@ struct STUDENT_LIST *createNewStudent(void)
 void studentOperation(struct STUDENT_LIST *thisUser)
 {
     if (thisUser == nullptr)
-        return;
-
+    {
+        cout << "There is no Such Username!" << endl;
+    return;
+    }
     if (checkPass(thisUser->student.getPassword()) == false)
         return;
 }
@@ -50,19 +52,3 @@ struct STUDENT_LIST *findStudent(void)
     return sTemp;
 }
 
-bool checkPass(string Password)
-{
-    string tempPassword;
-    int operation = 1;
-    while (operation != 0)
-    {
-        cout << "Please Enter Your Password: ";
-        cin >> tempPassword;
-        if (Password.compare(tempPassword) == 0)
-            return true;
-        cout << "WRONG PASSWORD!" << endl;
-        cout << "Press 1 to Retry and 0 to exit: ";
-        cin >> operation;
-    }
-    return false;
-}

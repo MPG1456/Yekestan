@@ -19,5 +19,6 @@ struct MASTER_LIST
 extern MASTER_LIST *mHead;
 
 struct MASTER_LIST *createNewMaster();
-
+void masterOperation(struct MASTER_LIST *);
+struct MASTER_LIST *findMaster(void);
 #endif

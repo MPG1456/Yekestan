@@ -13,6 +13,7 @@ void welcome(void)
 
 void sign(void)
 {
+    system("cls");
     int action;
     cout << "0. Exit" << endl;
     cout << "1. Sign Up" << endl;
@@ -39,6 +40,7 @@ void sign(void)
 void sign_up(void)
 {
     int action;
+    cout << endl;
     cout << "0. Exit" << endl;
     cout << "1. Sign Up as Student" << endl;
     cout << "2. Sign Up as Master" << endl;
@@ -62,6 +64,7 @@ void sign_up(void)
 void sign_in(void)
 {
     int action;
+    cout << endl;
     cout << "0. Exit" << endl;
     cout << "1. Sign in as Student" << endl;
     cout << "2. Sign in as Master" << endl;
