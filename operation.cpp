@@ -14,12 +14,15 @@ void welcome(void)
 void sign(void)
 {
     int action;
-    cout << "Please Choose The Action:" << endl;
-    cout << "1. Sign Up" << endl
-         << "2. Sign In" << endl;
+    cout << "0. Exit" << endl;
+    cout << "1. Sign Up" << endl;
+    cout << "2. Sign In" << endl;
+    cout << "Please Choose The Action: ";
     cin >> action;
     switch (action)
     {
+    case 0:
+        return;
     case 1:
         sign_up();
         break;
@@ -30,29 +33,25 @@ void sign(void)
         cout << "Wrong Input!!! Please Try Again." << endl;
         return sign();
     }
+    sign();
 }
 
 void sign_up(void)
 {
     int action;
-    cout << "For Signing Up as Student Enter 1" << endl;
-    cout << "For Signing Up as Master Enter 2" << endl;
-    cout << "For Signing Up as Admin Enter 3" << endl;
-    cout << "For Exiting Enter 0" << endl;
+    cout << "0. Exit" << endl;
+    cout << "1. Sign Up as Student" << endl;
+    cout << "2. Sign Up as Master" << endl;
     cout << "Choose The Operation: ";
     cin >> action;
     switch (action)
     {
     case 1:
-        struct STUDENT_LIST *thisUser = createNewStudent();
-        studentOperation(thisUser);
+        studentOperation(createNewStudent());
         break;
     case 2:
-        struct MASTER_LIST *thisUser = createNewMaster();
+        createNewMaster();
         cout << "Once Admin Approved Your Account You Will Be able to Sign In to It." << endl;
-        break;
-    case 3:
-        checkAdmin();
         break;
     default:
         break;
@@ -62,5 +61,27 @@ void sign_up(void)
 
 void sign_in(void)
 {
+    int action;
+    cout << "0. Exit" << endl;
+    cout << "1. Sign in as Student" << endl;
+    cout << "2. Sign in as Master" << endl;
+    cout << "3. Sign in as Admin" << endl;
+    cout << "Choose The Operation: ";
 
+    cin >> action;
+    switch (action)
+    {
+    case 1:
+        studentOperation(findStudent());
+        break;
+    case 2:
+        masterOperation(findMaster());
+        break;
+    case 3:
+        checkAdmin();
+        break;
+    default:
+        break;
+    }
+    sign();
 }

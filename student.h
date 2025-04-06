@@ -4,7 +4,7 @@
 #include "person.h"
 using namespace std;
 
-class Student
+class Student : public Person
 {
     public:
     Student();
@@ -20,5 +20,7 @@ extern STUDENT_LIST *sHead;
 
 struct STUDENT_LIST *createNewStudent();
 void studentOperation(struct STUDENT_LIST *);
+struct STUDENT_LIST *findStudent(void);
+bool checkPass(string tempPass);
 
 #endif
