@@ -1,6 +1,7 @@
 #include "operation.h"
 #include "student.h"
 #include "master.h"
+#include "admin.h"
 
 void welcome(void)
 {
@@ -34,7 +35,11 @@ void sign(void)
 void sign_up(void)
 {
     int action;
-    cout << "For Signing Up as Student Enter 1 and For Signing Up as Master Enter 2(enter other numbers to exit): ";
+    cout << "For Signing Up as Student Enter 1" << endl;
+    cout << "For Signing Up as Master Enter 2" << endl;
+    cout << "For Signing Up as Admin Enter 3" << endl;
+    cout << "For Exiting Enter 0" << endl;
+    cout << "Choose The Operation: ";
     cin >> action;
     switch (action)
     {
@@ -45,12 +50,14 @@ void sign_up(void)
     case 2:
         struct MASTER_LIST *thisUser = createNewMaster();
         cout << "Once Admin Approved Your Account You Will Be able to Sign In to It." << endl;
-        sign();
+        break;
+    case 3:
+        checkAdmin();
         break;
     default:
-        sign();
         break;
     }
+    sign();
 }
 
 void sign_in(void)
