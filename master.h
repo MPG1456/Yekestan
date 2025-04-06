@@ -18,6 +18,6 @@ struct MASTER_LIST
 
 extern MASTER_LIST *mHead;
 
-void createNewMaster();
+struct MASTER_LIST *createNewMaster();
 
 #endif

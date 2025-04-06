@@ -7,7 +7,7 @@ Master::Master()
     cout << "New Master Created" << endl;
 }
 
-void createNewMaster()
+struct MASTER_LIST *createNewMaster()
 {
     struct MASTER_LIST *mNew = new struct MASTER_LIST;
     
@@ -20,4 +20,5 @@ void createNewMaster()
             mTemp = mTemp->mNext;
         mTemp->mNext = mNew;
     }
+    return mNew;
 }

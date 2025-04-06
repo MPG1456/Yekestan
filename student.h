@@ -18,6 +18,7 @@ struct STUDENT_LIST
 
 extern STUDENT_LIST *sHead;
 
-void createNewStudent();
+struct STUDENT_LIST *createNewStudent();
+void studentOperation(struct STUDENT_LIST *);
 
 #endif

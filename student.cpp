@@ -7,7 +7,7 @@ Student::Student()
     cout << "New Student Added" << endl;
 }
 
-void createNewStudent()
+struct STUDENT_LIST *createNewStudent(void)
 {
     struct STUDENT_LIST *sNew = new struct STUDENT_LIST;
     
@@ -20,4 +20,5 @@ void createNewStudent()
             sTemp = sTemp->sNext;
         sTemp->sNext = sNew;
     }
+    return sNew;
 }
