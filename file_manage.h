@@ -9,6 +9,7 @@
 using namespace std;
 
 void openFiles(void);
-void readStudentList(void);
-void readMasterList(void);
+void readStudentList(ifstream &studentFile);
+void readMasterList(ifstream &masterFile);
+
 #endif
