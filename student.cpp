@@ -32,6 +32,8 @@ void studentOperation(struct STUDENT_LIST *thisUser)
     }
     if (checkPass(thisUser->student->getPassword()) == false)
         return;
+
+    cout << "Signed In Successfully :-))) " << endl;
 }
 
 struct STUDENT_LIST *findStudent(void)

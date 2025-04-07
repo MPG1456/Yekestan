@@ -15,6 +15,7 @@ void openFiles(void)
             cout << "Closing The Program... " << endl;
             exit(0);
         }
+        writeFile.close();
     }
     else
     {

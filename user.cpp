@@ -33,9 +33,9 @@ bool checkValidUsername(string username)
 {
     int len = username.length();
 
-    if (len > 10)
+    if (len > 10 || len < 4)
     {
-        cout << "Username Length Must Be less than 10 characters!" << endl;
+        cout << "Username Length Must Be 4 to 10 Characters!" << endl;
         return false;
     }
 

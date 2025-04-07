@@ -11,6 +11,7 @@ class Master : public Person
 public:
     Master();
     Master(string username, string password, string firstName, string lastName, bool gender, bool active);
+    bool isActive(void);
 };
 
 struct MASTER_LIST

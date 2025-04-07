@@ -31,6 +31,14 @@ void masterOperation(struct MASTER_LIST *thisUser)
 
     if (checkPass(thisUser->master->getPassword()) == false)
         return;    
+    
+    if(thisUser->master->isActive() == false)
+    {
+        cout << "Admin Hasn't Accepted Your Master Request Yet! Please Be Patient. " << endl << endl;
+        return;
+    }
+
+    cout << "Welcome " << thisUser->master->getName() << endl;
 }
 
 struct MASTER_LIST *findMaster(void)
@@ -54,5 +62,10 @@ struct MASTER_LIST *findMaster(void)
 Master::Master(string username, string password, string firstName, string lastName, bool gender, bool active) : Person(username, password, firstName, lastName, gender)
 {
     this->active = active;
+}
+
+bool Master::isActive(void)
+{
+    return active;
 }
 

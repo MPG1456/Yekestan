@@ -4,12 +4,19 @@ Admin::Admin(void) : User(ADMIN, ADMIN){}
 
 Admin admin;
 
-void checkAdmin(void)
+bool checkAdmin(void)
 {
     string tempUsername;
-    string tempPassword;
     cout << "Enter Admin Username: ";
     cin >> tempUsername;
-    if(checkPass(admin.getPassword()) == false)
+    return checkPass(admin.getPassword());
+}
+
+void adminOperation(bool isAdmin)
+{
+    if(isAdmin == false)
+    {
+        cout << "Signing in as Admin FAILED." << endl;
         return;
+    }
 }

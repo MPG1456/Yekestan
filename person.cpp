@@ -43,3 +43,10 @@ Person::Person(string username, string password, string firstName, string lastNa
     this->gender = gender;
 }
 
+string Person::getName(void)
+{
+    string name = firstName + " ";
+    name += lastName;
+    return name;
+}
+
