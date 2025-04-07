@@ -71,3 +71,43 @@ void readStudentList(ifstream &studentFile)
     }
     cout << "Student File Read Completely :-)" << endl;
 }
+
+void readMasterList(ifstream &masterFile)
+{
+    MASTER_LIST *mNew;
+    string line, username, password, firstName, lastName, gender, active;
+    while (getline(masterFile, line))
+    {
+        if (mHead == nullptr)
+        {
+            mHead = new MASTER_LIST;
+            mNew = mHead;
+            mHead->mNext = nullptr;
+        }
+        else
+        {
+            mNew->mNext = new MASTER_LIST;
+            mNew = mNew->mNext;
+            mNew->mNext = nullptr;
+        }
+
+        username = line;
+        getline(masterFile, password);
+        getline(masterFile, firstName);
+        getline(masterFile, lastName);
+        getline(masterFile, gender);
+        getline(masterFile, active);
+        if (gender[0] == '1')
+            if (active[0] == '1')
+                mNew->master = new Master(username, password, firstName, lastName, 1, 1);
+            else
+                mNew->master = new Master(username, password, firstName, lastName, 1, 0);
+
+        else
+            if (active[0] == '1')
+                mNew->master = new Master(username, password, firstName, lastName, 0, 1);
+            else
+                mNew->master = new Master(username, password, firstName, lastName, 0, 0);
+    }
+    cout << "Master File Read Completely :-)" << endl;
+}

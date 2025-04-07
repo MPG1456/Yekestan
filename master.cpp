@@ -51,6 +51,8 @@ struct MASTER_LIST *findMaster(void)
     return mTemp;
 }
 
-Master::Master(string username, string password, string firstName, string lastName, bool gender) : Person(username, password, firstName, lastName, gender)
-{}
+Master::Master(string username, string password, string firstName, string lastName, bool gender, bool active) : Person(username, password, firstName, lastName, gender)
+{
+    this->active = active;
+}
 
