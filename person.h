@@ -12,6 +12,7 @@ class Person : public User
     bool gender;
     public:
     Person();
+    Person(string username, string password, string firstName, string lastName, bool gender);
 };
 
 bool checkValidName(string fName, string lName);

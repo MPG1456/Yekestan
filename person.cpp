@@ -36,3 +36,10 @@ bool checkValidName(string fName, string lName)
     return true;
 }
 
+Person::Person(string username, string password, string firstName, string lastName, bool gender) : User(username, password)
+{
+    this->firstName = firstName;
+    this->lastName = lastName;
+    this->gender = gender;
+}
+

@@ -5,12 +5,13 @@ MASTER_LIST *mHead = nullptr;
 Master::Master()
 {
     active = false;
+
 }
 
 struct MASTER_LIST *createNewMaster()
 {
     struct MASTER_LIST *mNew = new struct MASTER_LIST;
-    
+    mNew->master = new Master;
     if(mHead == nullptr)
         mHead = mNew;
     else
@@ -28,7 +29,7 @@ void masterOperation(struct MASTER_LIST *thisUser)
     if (thisUser == nullptr)
         return;
 
-    if (checkPass(thisUser->master.getPassword()) == false)
+    if (checkPass(thisUser->master->getPassword()) == false)
         return;    
 }
 
@@ -41,7 +42,7 @@ struct MASTER_LIST *findMaster(void)
     cin >> tempUsername;
     while (mTemp)
     {
-        if (mTemp->master.getUsername().compare(tempUsername) == 0)
+        if (mTemp->master->getUsername().compare(tempUsername) == 0)
             break;
         else
             mTemp = mTemp->mNext;
@@ -49,4 +50,7 @@ struct MASTER_LIST *findMaster(void)
 
     return mTemp;
 }
+
+Master::Master(string username, string password, string firstName, string lastName, bool gender) : Person(username, password, firstName, lastName, gender)
+{}
 

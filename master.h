@@ -7,13 +7,15 @@ using namespace std;
 class Master : public Person
 {
     bool active;
-    public:
-        Master();
+
+public:
+    Master();
+    Master(string username, string password, string firstName, string lastName, bool gender);
 };
 
 struct MASTER_LIST
 {
-    Master master;
+    Master *master;
     struct MASTER_LIST *mNext;
 };
 
