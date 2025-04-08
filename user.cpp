@@ -162,3 +162,21 @@ bool checkPass(string Password)
     return false;
 }
 
+void User::changePass(string *oldPass)
+{
+    string newPass;
+    while (1)
+    {
+        cout << "Please Enter Your New Password: ";
+        cin >> newPass;
+
+        if (checkValidPassword(newPass) == true)
+        {
+            doubleCheckPassword(newPass);
+            break;
+        }
+    }
+    *oldPass = newPass;
+    cout << "Password Successfuly Changed." << endl;
+}
+
