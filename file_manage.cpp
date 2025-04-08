@@ -112,3 +112,39 @@ void readMasterList(ifstream &masterFile)
     }
     cout << "Master File Read Completely :-)" << endl;
 }
+
+void submitInformation(void)
+{
+    ofstream studentFile("student.txt", ios::trunc), masterFile("master.txt", ios::trunc);
+    STUDENT_LIST *sTemp = sHead;
+    MASTER_LIST *mTemp = mHead;
+    while(sHead)
+    {
+        studentFile << sTemp->student->getUsername() << endl;
+        studentFile << sTemp->student->getPassword() << endl;
+        studentFile << sTemp->student->getFirstName() << endl;
+        studentFile << sTemp->student->getLastName() << endl;
+        studentFile << sTemp->student->getGender() << endl;
+        sTemp = sTemp->sNext;
+        delete sHead->student;
+        delete sHead;
+        sHead = sTemp;
+    }
+
+    while(mHead)
+    {
+        masterFile << mTemp->master->getUsername() << endl;
+        masterFile << mTemp->master->getPassword() << endl;
+        masterFile << mTemp->master->getFirstName() << endl;
+        masterFile << mTemp->master->getLastName() << endl;
+        masterFile << mTemp->master->getGender() << endl;
+        masterFile << mTemp->master->isActive() << endl;
+        mTemp = mTemp->mNext;
+        delete mHead->master;
+        delete mHead;
+        mHead = mTemp;
+    }
+    masterFile.close();
+    studentFile.close();
+}
+

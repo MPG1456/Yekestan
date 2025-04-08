@@ -9,5 +9,6 @@ void welcome(void);
 void sign(void);
 void sign_up(void);
 void sign_in(void);
+void endMessage(void);
 
 #endif

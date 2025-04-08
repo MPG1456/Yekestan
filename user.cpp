@@ -162,7 +162,3 @@ bool checkPass(string Password)
     return false;
 }
 
-// void freeAllUsers()
-// {
-    
-// }

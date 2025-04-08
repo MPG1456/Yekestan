@@ -56,7 +56,6 @@ void sign_up(void)
     default:
         break;
     }
-    sign();
 }
 
 void sign_in(void)
@@ -84,6 +83,14 @@ void sign_in(void)
     default:
         break;
     }
-    sign();
+}
+
+void endMessage(void)
+{
+    cout << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "PROMGRAM SUCCESSFULY CLOSED" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
 }
 

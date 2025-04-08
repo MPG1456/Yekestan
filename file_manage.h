@@ -12,4 +12,5 @@ void openFiles(void);
 void readStudentList(ifstream &studentFile);
 void readMasterList(ifstream &masterFile);
 void submitInformation(void);
+
 #endif
