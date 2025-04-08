@@ -15,5 +15,6 @@ extern Admin admin;
 
 bool checkAdmin();
 void adminOperation(bool checkAdmin);
+void showAdminMenu(void);
 
 #endif

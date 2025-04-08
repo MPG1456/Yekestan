@@ -39,6 +39,24 @@ void masterOperation(struct MASTER_LIST *thisUser)
     }
 
     cout << "Welcome " << thisUser->master->getFirstName() << " " << thisUser->master->getLastName() << endl;
+    
+    int action;
+    while (true)
+    {
+        showMasterMenu();
+        cin >> action;
+        switch (action)
+        {
+        case 1:
+            thisUser->master->changePass(&thisUser->master->getPassword());
+            break;
+        case 5:
+            return;
+        default:
+            cout << "Wrone Input! TRY AGAIN" << endl;
+            break;
+        }
+    }
 }
 
 struct MASTER_LIST *findMaster(void)
@@ -69,3 +87,12 @@ bool Master::isActive(void)
     return active;
 }
 
+void showMasterMenu(void)
+{
+    cout << "1. Change Password" << endl;
+    cout << "2. Make New Course" << endl;
+    cout << "3. Show My Courses" << endl;
+    cout << "4. Show My Assignments" << endl;
+    cout << "5. Sign Out" << endl;
+    cout << "Choose Desired Action: ";
+}

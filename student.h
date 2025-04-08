@@ -22,5 +22,6 @@ extern STUDENT_LIST *sHead;
 struct STUDENT_LIST *createNewStudent();
 void studentOperation(struct STUDENT_LIST *);
 struct STUDENT_LIST *findStudent(void);
+void showStudentMenu(void);
 
 #endif
