@@ -13,6 +13,7 @@ class Admin : public User
 
 extern Admin admin;
 
-void checkAdmin();
+bool checkAdmin();
+void adminOperation(bool checkAdmin);
 
 #endif

@@ -10,7 +10,7 @@ Student::Student()
 struct STUDENT_LIST *createNewStudent(void)
 {
     struct STUDENT_LIST *sNew = new struct STUDENT_LIST;
-
+    sNew->student = new Student;
     if (sHead == nullptr)
         sHead = sNew;
     else
@@ -30,8 +30,10 @@ void studentOperation(struct STUDENT_LIST *thisUser)
         cout << "There is no Such Username!" << endl;
     return;
     }
-    if (checkPass(thisUser->student.getPassword()) == false)
+    if (checkPass(thisUser->student->getPassword()) == false)
         return;
+
+    cout << "Signed In Successfully :-))) " << endl;
 }
 
 struct STUDENT_LIST *findStudent(void)
@@ -43,7 +45,7 @@ struct STUDENT_LIST *findStudent(void)
     cin >> tempUsername;
     while (sTemp)
     {
-        if (sTemp->student.getUsername().compare(tempUsername) == 0)
+        if (sTemp->student->getUsername().compare(tempUsername) == 0)
             break;
         else
             sTemp = sTemp->sNext;
@@ -52,3 +54,5 @@ struct STUDENT_LIST *findStudent(void)
     return sTemp;
 }
 
+Student::Student(string username, string password, string firstName, string lastName, bool gender) : Person(username, password, firstName, lastName, gender)
+{}

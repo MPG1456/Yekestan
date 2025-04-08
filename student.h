@@ -8,11 +8,12 @@ class Student : public Person
 {
     public:
     Student();
+    Student(string username, string password, string firstName, string lastName, bool gender);
 };
 
 struct STUDENT_LIST
 {
-    Student student;
+    Student *student;
     struct STUDENT_LIST *sNext;
 };
 

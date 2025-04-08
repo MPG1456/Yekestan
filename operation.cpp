@@ -5,7 +5,6 @@
 
 void welcome(void)
 {
-    system("cls");
     cout << "----------YEKESTAN----------" << endl;
     cout << "WELCOME :)" << endl
          << endl;
@@ -13,7 +12,6 @@ void welcome(void)
 
 void sign(void)
 {
-    system("cls");
     int action;
     cout << "0. Exit" << endl;
     cout << "1. Sign Up" << endl;
@@ -58,7 +56,6 @@ void sign_up(void)
     default:
         break;
     }
-    sign();
 }
 
 void sign_in(void)
@@ -81,11 +78,19 @@ void sign_in(void)
         masterOperation(findMaster());
         break;
     case 3:
-        checkAdmin();
+        adminOperation(checkAdmin());
         break;
     default:
         break;
     }
-    sign();
+}
+
+void endMessage(void)
+{
+    cout << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "PROMGRAM SUCCESSFULY CLOSED" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
 }
 
