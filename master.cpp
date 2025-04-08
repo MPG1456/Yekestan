@@ -38,7 +38,7 @@ void masterOperation(struct MASTER_LIST *thisUser)
         return;
     }
 
-    cout << "Welcome " << thisUser->master->getName() << endl;
+    cout << "Welcome " << thisUser->master->getFirstName() << " " << thisUser->master->getLastName() << endl;
 }
 
 struct MASTER_LIST *findMaster(void)
