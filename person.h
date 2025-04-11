@@ -13,9 +13,9 @@ class Person : public User
     public:
     Person();
     Person(string username, string password, string firstName, string lastName, bool gender);
-    string getFirstName(void);
-    string getLastName(void);
-    bool getGender(void);
+    string getFirstName(void) const;
+    string getLastName(void) const;
+    bool getGender(void) const;
 };
 
 bool checkValidName(string fName, string lName);

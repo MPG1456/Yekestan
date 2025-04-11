@@ -43,17 +43,17 @@ Person::Person(string username, string password, string firstName, string lastNa
     this->gender = gender;
 }
 
-string Person::getFirstName(void)
+string Person::getFirstName(void) const
 {
     return firstName;
 }
 
-string Person::getLastName(void)
+string Person::getLastName(void) const
 {
     return lastName;
 }
 
-bool Person::getGender(void)
+bool Person::getGender(void) const
 {
     return gender;
 }
