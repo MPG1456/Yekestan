@@ -7,11 +7,11 @@ using namespace std;
 class Master : public Person
 {
     bool active;
-
+    struct COURSE_LIST *courseList;
 public:
     Master();
     Master(string username, string password, string firstName, string lastName, bool gender, bool active);
-    bool isActive(void);
+    bool isActive(void) const;
 };
 
 struct MASTER_LIST

@@ -5,7 +5,7 @@ MASTER_LIST *mHead = nullptr;
 Master::Master()
 {
     active = false;
-
+    courseList = nullptr;
 }
 
 struct MASTER_LIST *createNewMaster()
@@ -50,7 +50,7 @@ void masterOperation(struct MASTER_LIST *thisUser)
         case 1:
             thisUser->master->changePass(&thisUser->master->getPassword());
             break;
-        case 5:
+        case 4:
             return;
         default:
             cout << "Wrone Input! TRY AGAIN" << endl;
@@ -82,7 +82,7 @@ Master::Master(string username, string password, string firstName, string lastNa
     this->active = active;
 }
 
-bool Master::isActive(void)
+bool Master::isActive(void) const
 {
     return active;
 }
@@ -92,7 +92,6 @@ void showMasterMenu(void)
     cout << "1. Change Password" << endl;
     cout << "2. Make New Course" << endl;
     cout << "3. Show My Courses" << endl;
-    cout << "4. Show My Assignments" << endl;
-    cout << "5. Sign Out" << endl;
+    cout << "4. Sign Out" << endl;
     cout << "Choose Desired Action: ";
 }
