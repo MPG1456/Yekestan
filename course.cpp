@@ -79,22 +79,6 @@ string Course::getMasterName(void) const
     return fullName;
 }
 
-void showAllCourses(void)
-{
-    struct COURSE_LIST *cTemp = cHead;
-    if (cTemp == nullptr)
-    {
-        cout << "There is No Courses To Show!" << endl;
-        return;
-    }
-    while (cTemp != nullptr)
-    {
-        cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << ": ";
-        cout << cTemp->course->getMasterName() << endl;
-        cTemp = cTemp->cNext;
-    }
-}
-
 struct ASSIGNMENT_LIST *Course::getAssignmentList(void) const
 {
     return aList;

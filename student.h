@@ -19,6 +19,7 @@ class Student : public Person
     void showMyCourses(void);
     bool studentCourseAction(void);
     void showMyAssignments(struct ASSIGNMENT_LIST *aList);
+    void giveScore(Course *course);
 };
 
 struct STUDENT_LIST

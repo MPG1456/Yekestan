@@ -112,8 +112,7 @@ void Student::showMyCourses(void)
         cout << eTemp->course->getMasterName() << endl;
     }
 
-    while (studentCourseAction() == false)
-        ;
+    while (studentCourseAction() == false);
 }
 
 bool Student::studentCourseAction(void)
@@ -133,7 +132,9 @@ bool Student::studentCourseAction(void)
         return false;
     }
 
+    static bool isFirstTime = true;
     cout << "1. To See The Assignments" << endl;
+    cout << "2. To Give Score" << endl;
     cout << "2. To Exit" << endl;
     cout << "Choose Your Action: ";
     cin >> action;
@@ -141,7 +142,11 @@ bool Student::studentCourseAction(void)
     {
     case 1:
         showMyAssignments(eTemp->course->getAssignmentList());
+        return false;
     case 2:
+        giveScore(eTemp->course);
+        return false;
+    case 3:
         return true;
     default:
         cout << "WRONG INPUT!" << endl;
@@ -185,3 +190,17 @@ void Student::showMyAssignments(struct ASSIGNMENT_LIST *aList)
     if (submissionCount == 0)
         cout << "No Submission Has Submited Yet!" << endl;
 }
+
+void giveScore(Course *course)
+{
+    static bool isFirstTime = true;
+    if(isFirstTime == false)
+    {
+        cout << "You Can Give Score Only once!" << endl;
+        return;
+    }
+
+    course->setScore();
+    isFirstTime = false;
+}
+
