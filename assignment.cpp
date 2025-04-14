@@ -2,8 +2,6 @@
 
 Assignment::Assignment(Course *course) : course(course)
 {
-    cout << "Enter The Capacity of The Assignment: ";
-    cin >> capacity;
     cout << "Enter Title of Assignment: ";
     cin >> title;
     cout << "Enter Description of Assignment: ";

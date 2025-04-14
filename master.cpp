@@ -5,19 +5,18 @@ MASTER_LIST *mHead = nullptr;
 Master::Master()
 {
     active = false;
-    courseList = nullptr;
 }
 
 struct MASTER_LIST *createNewMaster()
 {
     struct MASTER_LIST *mNew = new struct MASTER_LIST;
     mNew->master = new Master;
-    if(mHead == nullptr)
+    if (mHead == nullptr)
         mHead = mNew;
     else
     {
         struct MASTER_LIST *mTemp = mHead;
-        while(mTemp->mNext)
+        while (mTemp->mNext)
             mTemp = mTemp->mNext;
         mTemp->mNext = mNew;
     }
@@ -30,16 +29,17 @@ void masterOperation(struct MASTER_LIST *thisUser)
         return;
 
     if (checkPass(thisUser->master->getPassword()) == false)
-        return;    
-    
-    if(thisUser->master->isActive() == false)
+        return;
+
+    if (thisUser->master->isActive() == false)
     {
-        cout << "Admin Hasn't Accepted Your Master Request Yet! Please Be Patient. " << endl << endl;
+        cout << "Admin Hasn't Accepted Your Master Request Yet! Please Be Patient. " << endl
+             << endl;
         return;
     }
 
     cout << "Welcome " << thisUser->master->getFirstName() << " " << thisUser->master->getLastName() << endl;
-    
+
     int action;
     while (true)
     {
@@ -50,6 +50,8 @@ void masterOperation(struct MASTER_LIST *thisUser)
         case 1:
             thisUser->master->changePass(&thisUser->master->getPassword());
             break;
+        case 3:
+            showMasterCourses(thisUser->master);
         case 4:
             return;
         default:
@@ -95,3 +97,44 @@ void showMasterMenu(void)
     cout << "4. Sign Out" << endl;
     cout << "Choose Desired Action: ";
 }
+
+void showMasterCourses(Master *thisUser)
+{
+    struct COURSE_LIST *cTemp = cHead;
+    while (cTemp != nullptr)
+    {
+        if (cTemp->course->getMasterName() == (thisUser->getFirstName() + thisUser->getLastName()))
+            cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
+        cTemp = cTemp->cNext;
+    }
+    int action;
+    while (true)
+    {
+        cout << "Choose A Course ID To continue or Enter 0 to exit: ";
+        cin >> action;
+        if (action == 0)
+            return;
+        cTemp = cHead;
+        if (cTemp->course->getId() == action)
+        {
+            cout << "0. Exit" << endl;
+            cout << "1. Add Assignment" << endl;
+            cout << "2. See Assignments" << endl;
+            cout << "3. Change Added Assignments" << endl;
+            cout << "4. Show Students" << endl;
+            cout << "Choose The Action: ";
+            cin >> action;
+            switch (action)
+            {
+            case 0:
+                return;
+            case 1:
+                cTemp->course->addAssignment();
+                break;
+            case 2:
+                
+            }
+        }
+    }
+}
+

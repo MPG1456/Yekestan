@@ -191,7 +191,7 @@ void Student::showMyAssignments(struct ASSIGNMENT_LIST *aList)
         cout << "No Submission Has Submited Yet!" << endl;
 }
 
-void giveScore(Course *course)
+void Student::giveScore(Course *course)
 {
     static bool isFirstTime = true;
     if(isFirstTime == false)

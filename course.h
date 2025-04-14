@@ -33,6 +33,7 @@ public:
     void setScore(void);
     int getCapacity(void) const;
     int getRemainedCapacity(void) const;
+    void showCourseAssignments(void)
 };
 
 struct COURSE_LIST
@@ -44,6 +45,7 @@ struct COURSE_LIST
 struct ENROLLMENT_LIST
 {
     Course *course;
+    int Score;
     ENROLLMENT_LIST *eNext;
 };
 

@@ -1,6 +1,6 @@
 #include "course.h"
 
-static int courseCount = 0;
+static int courseCount = 1;
 
 COURSE_LIST *cHead = nullptr;
 
@@ -99,7 +99,8 @@ void showAllCourses(void)
         cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << ": ";
         cout << cTemp->course->getMasterName() << endl;
         cout << "Capacity: " << cTemp->course->getCapacity() << endl;
-        cout << "Remained Capacity: " << cTemp->course->getRemainedCapacity() << endl << endl;
+        cout << "Remained Capacity: " << cTemp->course->getRemainedCapacity() << endl
+             << endl;
     }
 }
 
@@ -108,16 +109,20 @@ void Course::setScore()
     static int counter = 0;
     float newScore;
     counter++;
-    cout << "Enter Your Score For This Course: ";
-    cin >> newScore;
-    if (counter == 1)
-        score = newScore;
-    else
+    bool isCorrect = false;
+    do
     {
-        score = score * (counter - 1);
-        score += newScore;
-        score /= counter;
-    }
+        cout << "Enter Your Score For This Course (0 - 10): ";
+        cin >> newScore;
+        if (newScore <= 10 && newScore >= 0)
+            isCorrect = true;
+        else
+            cout << "Score Must be a Value Between (0 - 10)" << endl;
+    } while (isCorrect == false);
+
+    score = score * (counter - 1);
+    score += newScore;
+    score /= counter;
 }
 
 float Course::getScore(void)
@@ -134,4 +139,3 @@ int Course::getRemainedCapacity(void) const
 {
     return remainedCapacity;
 }
-

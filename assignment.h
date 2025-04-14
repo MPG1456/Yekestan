@@ -10,7 +10,6 @@ using namespace std;
 class Assignment
 {
 private:
-    int capacity;
     string title;
     string description;
     struct SUBMISSION_LIST *subList;

@@ -44,7 +44,7 @@ void openFiles(void)
 void readStudentList(ifstream &studentFile)
 {
     STUDENT_LIST *sNew;
-    string line, username, password, firstName, lastName, gender;
+    string line, username, password, firstName, lastName, gender, GPA;
     while (getline(studentFile, line))
     {
         if (sHead == nullptr)
@@ -65,10 +65,11 @@ void readStudentList(ifstream &studentFile)
         getline(studentFile, firstName);
         getline(studentFile, lastName);
         getline(studentFile, gender);
+        getline(studentFile, GPA);
         if (gender[0] == '1')
-            sNew->student = new Student(username, password, firstName, lastName, 1);
+            sNew->student = new Student(username, password, firstName, lastName, 1, stof(GPA));
         else
-            sNew->student = new Student(username, password, firstName, lastName, 0);
+            sNew->student = new Student(username, password, firstName, lastName, 0, stof(GPA));
     }
     cout << "Student File Read Completely :-)" << endl;
 }
@@ -104,11 +105,10 @@ void readMasterList(ifstream &masterFile)
             else
                 mNew->master = new Master(username, password, firstName, lastName, 1, 0);
 
+        else if (active[0] == '1')
+            mNew->master = new Master(username, password, firstName, lastName, 0, 1);
         else
-            if (active[0] == '1')
-                mNew->master = new Master(username, password, firstName, lastName, 0, 1);
-            else
-                mNew->master = new Master(username, password, firstName, lastName, 0, 0);
+            mNew->master = new Master(username, password, firstName, lastName, 0, 0);
     }
     cout << "Master File Read Completely :-)" << endl;
 }
@@ -118,20 +118,21 @@ void submitInformation(void)
     ofstream studentFile("student.txt", ios::trunc), masterFile("master.txt", ios::trunc);
     STUDENT_LIST *sTemp = sHead;
     MASTER_LIST *mTemp = mHead;
-    while(sHead)
+    while (sHead)
     {
         studentFile << sTemp->student->getUsername() << endl;
         studentFile << sTemp->student->getPassword() << endl;
         studentFile << sTemp->student->getFirstName() << endl;
         studentFile << sTemp->student->getLastName() << endl;
         studentFile << sTemp->student->getGender() << endl;
+        studentFile << sTemp->student->getGPA() << endl;
         sTemp = sTemp->sNext;
         delete sHead->student;
         delete sHead;
         sHead = sTemp;
     }
 
-    while(mHead)
+    while (mHead)
     {
         masterFile << mTemp->master->getUsername() << endl;
         masterFile << mTemp->master->getPassword() << endl;
@@ -147,4 +148,3 @@ void submitInformation(void)
     masterFile.close();
     studentFile.close();
 }
-
