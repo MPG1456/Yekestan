@@ -9,6 +9,8 @@ Assignment::Assignment(Course *course) : course(course)
     cout << "Do You Want to Active This Assignment? (1 for yes, 0 for no): ";
     cin >> isActive;
     cout << "Assignment Successfuly Added" << endl;
+    for(int i = 0; i < 50; ++i)
+        subList[i] = nullptr;
 }
 
 int Assignment::getCourseId(void) const
@@ -16,7 +18,7 @@ int Assignment::getCourseId(void) const
     return course->getId();
 }
 
-struct SUBMISSION_LIST *Assignment::getSubList(void) const
+Submission **Assignment::getSubList(void) const
 {
     return subList;
 }

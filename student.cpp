@@ -4,7 +4,6 @@ STUDENT_LIST *sHead = nullptr;
 
 Student::Student()
 {
-    enrolledCourses = nullptr;
     GPA = -1;
 }
 
@@ -39,11 +38,12 @@ void studentOperation(struct STUDENT_LIST *thisUser)
     while (true)
     {
         showStudentMenu();
+        string newPass;
         cin >> action;
         switch (action)
         {
         case 1:
-            thisUser->student->changePass(&thisUser->student->getPassword());
+            thisUser->student->changePass();
             break;
         case 2:
             thisUser->student->showMyCourses();
@@ -99,40 +99,40 @@ float Student::getGPA(void) const
 
 void Student::showMyCourses(void)
 {
-    struct ENROLLMENT_LIST *eTemp = enrolledCourses;
-    if (eTemp == nullptr)
+    if (enrolledCourses[0] == nullptr)
     {
         cout << "There is No Enrolled Courses To Show!" << endl;
         return;
     }
 
-    while (eTemp != nullptr)
+    for (int i = 0; i < 10 && enrolledCourses[i] != nullptr; ++i)
     {
-        cout << eTemp->course->getId() << ". " << eTemp->course->getCourseName() << ": ";
-        cout << eTemp->course->getMasterName() << endl;
+        cout << enrolledCourses[i]->getId() << ". " << enrolledCourses[i]->getCourseName() << ": ";
+        cout << enrolledCourses[i]->getMasterName() << endl;
     }
 
-    while (studentCourseAction() == false);
+    while (studentCourseAction() == false)
+        ;
 }
 
 bool Student::studentCourseAction(void)
 {
-    struct ENROLLMENT_LIST *eTemp = enrolledCourses;
-    int action;
+    int action, i;
     cout << "Enter Course ID To see The Details or Enter 0 To Exit: ";
     cin >> action;
     if (action == 0)
         return true;
 
-    while (eTemp != nullptr && eTemp->course->getId() != action)
-        eTemp = eTemp->eNext;
-    if (eTemp == nullptr)
+    for (i = 0; i < 10 && enrolledCourses[i] != nullptr && enrolledCourses[i]->getId() != action; ++i)
+        ;
+
+    if (i == 10 || enrolledCourses[i] == nullptr)
     {
-        cout << "No Courses Found With ID: " << action << endl;
+        cout << "No Courses Found With ID: " << action << endl
+             << endl;
         return false;
     }
 
-    static bool isFirstTime = true;
     cout << "1. To See The Assignments" << endl;
     cout << "2. To Give Score" << endl;
     cout << "2. To Exit" << endl;
@@ -141,10 +141,10 @@ bool Student::studentCourseAction(void)
     switch (action)
     {
     case 1:
-        showMyAssignments(eTemp->course->getAssignmentList());
+        showMyAssignments(enrolledCourses[i]);
         return false;
     case 2:
-        giveScore(eTemp->course);
+        giveScore(enrolledCourses[i]);
         return false;
     case 3:
         return true;
@@ -154,47 +154,52 @@ bool Student::studentCourseAction(void)
     }
 }
 
-void Student::showMyAssignments(struct ASSIGNMENT_LIST *aList)
+void Student::showMyAssignments(Course *myCourse)
 {
-    int action, submissionCount = 0;
-    struct ASSIGNMENT_LIST *aTemp = aList;
-    Submission *tempSub;
-    while (aTemp != nullptr)
+    int action, i, j;
+    Assignment **assignList = myCourse->getAssignmentList();
+    Submission **subTemp;
+    if(assignList[0] == nullptr)
     {
-        aTemp = aTemp->aNext;
-        tempSub = aTemp->assignment->getSubList()->submission;
-        if (tempSub->getStu() == this)
-        {
-            submissionCount++;
-            cout << "==================================================================================" << endl;
-            cout << submissionCount << ". ";
-            cout << aTemp->assignment->getTitle() << ": " << aTemp->assignment->getDescription() << endl;
-            cout << "Your Respond: " << tempSub->getRespond() << endl;
-            cout << "Score: " << tempSub->getScore();
-            cout << "Status: ";
-            if (aTemp->assignment->getIsActive() == true)
-            {
-                cout << "Actvie" << endl;
-                cout << "Do You Want To Change This Respond? (1 for yes, 0 for no)";
-                cin >> action;
-                if (action == 1)
-                    tempSub->setRespond();
-            }
-            else
-                cout << "Not Active" << endl;
-            cout << "==================================================================================" << endl;
-
-            cout << endl;
-        }
+        cout << "No Assignments Yet!" << endl;
+        return;
     }
-    if (submissionCount == 0)
-        cout << "No Submission Has Submited Yet!" << endl;
+
+    for (i = 0; i < 10 && assignList[i] != nullptr; ++i)
+    {
+        subTemp = assignList[i]->getSubList();
+        for (j = 0; j < 50 && subTemp[j] != nullptr; ++j)
+            if (subTemp[j]->getStu() == this)
+            {
+                cout << "==================================================================================" << endl;
+                cout << i + 1 << ". ";
+                cout << assignList[i]->getTitle() << ": " << assignList[i]->getDescription() << endl;
+                cout << "Your Respond: " << subTemp[j]->getRespond() << endl;
+                cout << "Score: " << subTemp[j]->getScore();
+                cout << "Status: ";
+                if (assignList[i]->getIsActive() == true)
+                {
+                    cout << "Actvie" << endl;
+                    cout << "Do You Want To Change This Respond? (1 for yes, 0 for no)";
+                    cin >> action;
+                    if (action == 1)
+                        subTemp[j]->setRespond();
+                    
+                }
+                else
+                    cout << "Not Active" << endl;
+                cout << "==================================================================================" << endl;
+
+                cout << endl;
+                break;
+            }
+    }
 }
 
 void Student::giveScore(Course *course)
 {
     static bool isFirstTime = true;
-    if(isFirstTime == false)
+    if (isFirstTime == false)
     {
         cout << "You Can Give Score Only once!" << endl;
         return;
@@ -203,4 +208,3 @@ void Student::giveScore(Course *course)
     course->setScore();
     isFirstTime = false;
 }
-

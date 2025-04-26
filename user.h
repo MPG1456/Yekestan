@@ -18,7 +18,7 @@ class User
     User(string username, string password);
     string getUsername();
     string getPassword();
-    void changePass(string *oldPass);
+    void changePass(void);
 };
 
 void setUsername(string *username);

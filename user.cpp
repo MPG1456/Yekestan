@@ -162,7 +162,7 @@ bool checkPass(string Password)
     return false;
 }
 
-void User::changePass(string *oldPass)
+void User::changePass(void)
 {
     string newPass;
     while (1)
@@ -176,7 +176,7 @@ void User::changePass(string *oldPass)
             break;
         }
     }
-    *oldPass = newPass;
+    password = newPass;
     cout << "Password Successfuly Changed." << endl;
 }
 

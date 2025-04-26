@@ -1,6 +1,6 @@
 #include "submission.h"
 
-Submission::Submission(Assignment *Assignment, Student *student) : assignment(assignment), student(student)
+Submission::Submission(Student *student) : student(student)
 {
     score = 0;
     respond = "No Respond Has Given Yet!";
@@ -24,10 +24,10 @@ float Submission::getScore(void) const
     return score;
 }
 
-int Submission::getCourseId(void) const
-{
-    return assignment->getCourseId();
-}
+// int Submission::getCourseId(void) const
+// {
+//     return assignment->getCourseId();
+// }
 
 Student *Submission::getStu(void) const
 {

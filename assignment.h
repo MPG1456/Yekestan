@@ -12,23 +12,17 @@ class Assignment
 private:
     string title;
     string description;
-    struct SUBMISSION_LIST *subList;
+    Submission *subList[50];
     Course *course;
     bool isActive;
 
 public:
     Assignment(Course *course);
     int getCourseId(void) const;
-    struct SUBMISSION_LIST *getSubList(void) const;
+    Submission **getSubList(void) const;
     string getTitle(void) const;
     string getDescription(void) const;
     bool getIsActive(void) const;
-};
-
-struct ASSIGNMENT_LIST
-{
-    Assignment *assignment;
-    struct ASSIGNMENT_LIST *aNext;
 };
 
 #endif
