@@ -9,6 +9,7 @@ using namespace std;
 class Master : public Person
 {
     bool active;
+    bool available;
 
 public:
     Master();
@@ -30,4 +31,7 @@ void masterOperation(struct MASTER_LIST *);
 struct MASTER_LIST *findMaster(void);
 void showMasterMenu(void);
 void addNewAssignment(Master *);
+void deleteMaster(void);
+void showMasterInfo(void);
+
 #endif

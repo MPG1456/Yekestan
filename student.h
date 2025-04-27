@@ -10,7 +10,6 @@ using namespace std;
 class Student : public Person
 {
     float GPA;
-    // Course *enrolledCourses[10];
     struct ENROLLED_COURSES myCourses[10];
 
     public:
@@ -44,5 +43,7 @@ struct STUDENT_LIST *createNewStudent();
 void studentOperation(struct STUDENT_LIST *thisUser);
 struct STUDENT_LIST *findStudent(void);
 void showStudentMenu(void);
+void deleteStudent(void);
+void showStudentInfo(void);
 
 #endif

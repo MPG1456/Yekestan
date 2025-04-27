@@ -10,6 +10,7 @@ class Person : public User
     string firstName;
     string lastName;
     bool gender;
+    bool available;
     public:
     Person();
     Person(string username, string password, string firstName, string lastName, bool gender);
@@ -17,6 +18,8 @@ class Person : public User
     string getLastName(void) const;
     string getFullName(void) const;
     bool getGender(void) const;
+    bool isAvailable(void) const;
+    void setAvailable(bool status);
 };
 
 bool checkValidName(string fName, string lName);

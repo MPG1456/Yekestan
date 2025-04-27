@@ -5,6 +5,7 @@ STUDENT_LIST *sHead = nullptr;
 Student::Student()
 {
     GPA = -1;
+    setAvailable(true);
     for(int i = 0; i < 10; ++i)
         myCourses[i].score = -1;
 }
@@ -226,3 +227,45 @@ void Student::setCourseScore(Course *course)
     cin >> myCourses[i].score;
 }
 
+void deleteStudent(void)
+{
+    string tempName;
+    struct STUDENT_LIST *sTemp = sHead;
+    cout << "Enter Full Name: ";
+    cin >> tempName;
+    while (sHead)
+    {
+        if (tempName == sHead->student->getFullName())
+        {
+            sHead->student->setAvailable(false);
+            return;
+        }
+        sHead = sHead->sNext;
+    }
+    cout << tempName << " wasn't found!" << endl;
+    return;
+}
+
+void showStudentInfo(void)
+{
+    string tempName;
+    struct STUDENT_LIST *sTemp = sHead;
+    cout << "Enter Full name: ";
+    cin >> tempName;
+    while(sTemp)
+    {
+        if(sTemp->student->getFullName() == tempName)
+        {
+            cout << "Username: " << sTemp->student->getUsername() << endl;
+            cout << "Password: " << sTemp->student->getPassword() << endl;
+            cout << "Full Name: " << sTemp->student->getFullName() << endl;
+            cout << "Gender: " << (sTemp->student->getGender() == true ? "Male" : "Female") << endl;
+            cout << "GPA: " << sTemp->student->getGPA() << endl;
+            cout << "Status: " << (sTemp->student->isAvailable() == true ? "Available" : "Not Available") << endl;
+            return;
+        }
+        sTemp = sTemp->sNext;
+    }
+    cout << tempnam << " wan't found!" << endl;
+    return;
+}

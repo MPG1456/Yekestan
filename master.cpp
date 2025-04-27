@@ -5,6 +5,7 @@ MASTER_LIST *mHead = nullptr;
 Master::Master()
 {
     active = false;
+    setAvailable(true);
 }
 
 struct MASTER_LIST *createNewMaster()
@@ -159,4 +160,44 @@ void Master::showMasterCourses(void)
             }
         }
     }
+}
+
+void deleteMaster(void)
+{
+    string tempName;
+    struct MASTER_LIST *mTemp = mHead;
+    cout << "Enter Full Name: ";
+    cin >> tempName;
+    while (mTemp)
+    {
+        if (tempName == mTemp->master->getFullName())
+        {
+            mTemp->master->setAvailable(false);
+            return;
+        }
+        mTemp = mTemp->mNext;
+    }
+    cout << tempName << " wan't found!" << endl;
+    return;
+}
+
+void showMasterInfo(void)
+{
+    string tempName;
+    struct MASTER_LIST *mTemp = mHead;
+    cout << "Enter Full name: ";
+    cin >> tempName;
+    while(mTemp)
+    {
+        if(mTemp->master->getFullName() == tempName)
+        {
+            cout << "Username: " << mTemp->master->getUsername() << endl;
+            cout << "Password: " << mTemp->master->getPassword() << endl;
+            cout << "Full Name: " << mTemp->master->getFullName() << endl;
+            cout << "Gender: " << (mTemp->master->getGender() ? "Male" : "Female") << endl;
+            return;
+        }
+    }
+    cout << tempnam << " wan't found!" << endl;
+    return;
 }

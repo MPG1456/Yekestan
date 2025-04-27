@@ -64,3 +64,12 @@ string Person::getFullName(void) const
     return newName;
 }
 
+bool Person::isAvailable(void) const
+{
+    return available;
+}
+
+void Person::setAvailable(bool status)
+{
+    available = status;
+}
