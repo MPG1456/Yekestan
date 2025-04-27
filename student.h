@@ -10,7 +10,8 @@ using namespace std;
 class Student : public Person
 {
     float GPA;
-    Course *enrolledCourses[10];
+    // Course *enrolledCourses[10];
+    struct ENROLLED_COURSES myCourses[10];
 
     public:
     Student();
@@ -20,12 +21,21 @@ class Student : public Person
     bool studentCourseAction(void);
     void showMyAssignments(Course *);
     void giveScore(Course *);
+    int getCourseScore(Course *) const;
+    void setCourseScore(Course *);
 };
 
 struct STUDENT_LIST
 {
     Student *student;
     struct STUDENT_LIST *sNext;
+};
+
+struct ENROLLED_COURSES
+{
+    Course *course;
+    float score;
+    struct ENROLLE_COURSES *eNext;
 };
 
 extern STUDENT_LIST *sHead;

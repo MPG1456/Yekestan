@@ -19,7 +19,6 @@ public:
     void setRespond(void);
     float getScore(void) const;
     string getRespond(void) const;
-    //int getCourseId(void) const;
     Student *getStu(void) const;
 };
 

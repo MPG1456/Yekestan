@@ -15,6 +15,7 @@ class Person : public User
     Person(string username, string password, string firstName, string lastName, bool gender);
     string getFirstName(void) const;
     string getLastName(void) const;
+    string getFullName(void) const;
     bool getGender(void) const;
 };
 

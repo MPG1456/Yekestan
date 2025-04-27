@@ -9,10 +9,12 @@ using namespace std;
 class Master : public Person
 {
     bool active;
+
 public:
     Master();
     Master(string username, string password, string firstName, string lastName, bool gender, bool active);
     bool isActive(void) const;
+    void showMasterCourses(void);
 };
 
 struct MASTER_LIST
@@ -27,6 +29,5 @@ struct MASTER_LIST *createNewMaster();
 void masterOperation(struct MASTER_LIST *);
 struct MASTER_LIST *findMaster(void);
 void showMasterMenu(void);
-void showMasterCourses(Master *);
 void addNewAssignment(Master *);
 #endif

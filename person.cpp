@@ -58,3 +58,9 @@ bool Person::getGender(void) const
     return gender;
 }
 
+string Person::getFullName(void) const
+{
+    string newName = firstName + " " + lastName;
+    return newName;
+}
+

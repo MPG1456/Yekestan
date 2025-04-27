@@ -28,12 +28,13 @@ public:
     string getCourseName(void) const;
     int getId(void) const;
     string getMasterName(void) const;
-    Assignment **getAssignmentList(void) const;
+    Assignment **getAssignmentList(void);
     float getScore(void);
     void setScore(void);
     int getCapacity(void) const;
     int getRemainedCapacity(void) const;
     void showCourseAssignments(void);
+    void showAllStudents(void);
 };
 
 struct COURSE_LIST
@@ -45,5 +46,6 @@ struct COURSE_LIST
 extern COURSE_LIST *cHead;
 
 void showAllCourses(void);
-
+void showMasterCourses(Master *);
+void makeNewCourse(Master *);
 #endif

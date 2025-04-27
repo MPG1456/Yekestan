@@ -19,10 +19,13 @@ private:
 public:
     Assignment(Course *course);
     int getCourseId(void) const;
-    Submission **getSubList(void) const;
+    Submission **getSubList(void);
     string getTitle(void) const;
     string getDescription(void) const;
     bool getIsActive(void) const;
+    void setTitle(string newTitle);
+    void setDescription(string newDescription);
+    void setActive(bool newActiveMode);
 };
 
 #endif

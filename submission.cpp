@@ -24,11 +24,6 @@ float Submission::getScore(void) const
     return score;
 }
 
-// int Submission::getCourseId(void) const
-// {
-//     return assignment->getCourseId();
-// }
-
 Student *Submission::getStu(void) const
 {
     return student;

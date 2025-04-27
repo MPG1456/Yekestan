@@ -5,6 +5,8 @@ STUDENT_LIST *sHead = nullptr;
 Student::Student()
 {
     GPA = -1;
+    for(int i = 0; i < 10; ++i)
+        myCourses[i].score = -1;
 }
 
 struct STUDENT_LIST *createNewStudent(void)
@@ -38,7 +40,6 @@ void studentOperation(struct STUDENT_LIST *thisUser)
     while (true)
     {
         showStudentMenu();
-        string newPass;
         cin >> action;
         switch (action)
         {
@@ -99,20 +100,19 @@ float Student::getGPA(void) const
 
 void Student::showMyCourses(void)
 {
-    if (enrolledCourses[0] == nullptr)
+    if (myCourses[0].course == nullptr)
     {
         cout << "There is No Enrolled Courses To Show!" << endl;
         return;
     }
 
-    for (int i = 0; i < 10 && enrolledCourses[i] != nullptr; ++i)
+    for (int i = 0; i < 10 && myCourses[i].course != nullptr; ++i)
     {
-        cout << enrolledCourses[i]->getId() << ". " << enrolledCourses[i]->getCourseName() << ": ";
-        cout << enrolledCourses[i]->getMasterName() << endl;
+        cout << myCourses[i].course->getId() << ". " << myCourses[i].course->getCourseName() << ": ";
+        cout << myCourses[i].course->getMasterName() << endl;
     }
 
-    while (studentCourseAction() == false)
-        ;
+    while (studentCourseAction() == false);
 }
 
 bool Student::studentCourseAction(void)
@@ -123,10 +123,9 @@ bool Student::studentCourseAction(void)
     if (action == 0)
         return true;
 
-    for (i = 0; i < 10 && enrolledCourses[i] != nullptr && enrolledCourses[i]->getId() != action; ++i)
-        ;
+    for (i = 0; i < 10 && myCourses[i].course != nullptr && myCourses[i].course->getId() != action; ++i);
 
-    if (i == 10 || enrolledCourses[i] == nullptr)
+    if (i == 10 || myCourses[i].course == nullptr)
     {
         cout << "No Courses Found With ID: " << action << endl
              << endl;
@@ -141,10 +140,10 @@ bool Student::studentCourseAction(void)
     switch (action)
     {
     case 1:
-        showMyAssignments(enrolledCourses[i]);
+        showMyAssignments(myCourses[i].course);
         return false;
     case 2:
-        giveScore(enrolledCourses[i]);
+        giveScore(myCourses[i].course);
         return false;
     case 3:
         return true;
@@ -208,3 +207,22 @@ void Student::giveScore(Course *course)
     course->setScore();
     isFirstTime = false;
 }
+
+int Student::getCourseScore(Course *course) const
+{
+    for(int i = 0; i < 10; ++i)
+        if(myCourses[i].course == course)
+            return myCourses[i].score;
+    return -1;
+}
+
+void Student::setCourseScore(Course *course)
+{
+    int i;
+    for(i = 0; i < 10; ++i)
+        if(myCourses[i].course == course)
+            break;
+    cout << "Enter Students Score: " << endl;
+    cin >> myCourses[i].score;
+}
+

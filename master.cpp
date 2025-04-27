@@ -48,10 +48,14 @@ void masterOperation(struct MASTER_LIST *thisUser)
         switch (action)
         {
         case 1:
-            thisUser->master->changePass(&thisUser->master->getPassword());
+            thisUser->master->changePass();
+            break;
+        case 2:
+            makeNewCourse(thisUser->master);
             break;
         case 3:
             showMasterCourses(thisUser->master);
+            break;
         case 4:
             return;
         default:
@@ -98,30 +102,42 @@ void showMasterMenu(void)
     cout << "Choose Desired Action: ";
 }
 
-void showMasterCourses(Master *thisUser)
+void Master::showMasterCourses(void)
 {
     struct COURSE_LIST *cTemp = cHead;
     while (cTemp != nullptr)
     {
-        if (cTemp->course->getMasterName() == (thisUser->getFirstName() + thisUser->getLastName()))
+        if (cTemp->course->getMasterName() == this->getFullName())
             cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
         cTemp = cTemp->cNext;
     }
+    cout << endl;
     int action;
+    bool isCorrect = false;
     while (true)
     {
-        cout << "Choose A Course ID To continue or Enter 0 to exit: ";
-        cin >> action;
-        if (action == 0)
-            return;
-        cTemp = cHead;
-        if (cTemp->course->getId() == action)
+        do
+        {
+            cout << "Choose A Course ID To continue or Enter 0 to exit: ";
+            cin >> action;
+            if (action == 0)
+                return;
+            cTemp = cHead;
+            while (cTemp)
+                if (cTemp->course->getId() == action)
+                {
+                    isCorrect = true;
+                    break;
+                }
+                else
+                    cTemp = cTemp->cNext;
+        } while (isCorrect == false);
+        while (true)
         {
             cout << "0. Exit" << endl;
             cout << "1. Add Assignment" << endl;
             cout << "2. See Assignments" << endl;
-            cout << "3. Change Added Assignments" << endl;
-            cout << "4. Show Students" << endl;
+            cout << "3. Show Students" << endl;
             cout << "Choose The Action: ";
             cin >> action;
             switch (action)
@@ -132,9 +148,15 @@ void showMasterCourses(Master *thisUser)
                 cTemp->course->addAssignment();
                 break;
             case 2:
-                
+                cTemp->course->showCourseAssignments();
+                break;
+            case 3:
+                cTemp->course->showAllStudents();
+                break;
+            default:
+                cout << "Wrong Input! TRY AGAIN" << endl;
+                break;
             }
         }
     }
 }
-

@@ -13,13 +13,15 @@ Course::Course(Master *masterName) : masterName(masterName)
     cout << "Please Enter The Capacity Of This Course: ";
     cin >> capacity;
     remainedCapacity = capacity;
-    stuList = nullptr;
+    for(int i = 0; i < 50; ++i)
+        stuList[i] = nullptr;
     cout << "Do You Want to Add Assignment To This Course? (1 for yes, 0 for no): ";
     bool operation;
     if (operation == true)
         addAssignment();
     else
-        aList = nullptr;
+        for(int i = 0; i < 10; ++i)
+            assignList[i] = nullptr;
 
     struct COURSE_LIST *cTemp = cHead;
     if (cTemp == nullptr)
@@ -46,21 +48,16 @@ int Course::getCourseCount(int setNum)
 
 void Course::addAssignment()
 {
-    struct ASSIGNMENT_LIST *aTemp = aList;
-    if (aList == nullptr)
+    int i;
+    for (i = 0; i < 10 && assignList[i] != nullptr; ++i)
+        ;
+    if (i == 10)
     {
-        aTemp = new struct ASSIGNMENT_LIST;
-        aTemp->aNext = nullptr;
+        cout << "You Can't Add More than 10 Assignments!" << endl;
+        return;
     }
-    else
-    {
-        while (aTemp->aNext != nullptr)
-            aTemp = aTemp->aNext;
-        aTemp->aNext = new struct ASSIGNMENT_LIST;
-        aTemp = aTemp->aNext;
-        aTemp->aNext = nullptr;
-    }
-    aTemp->assignment = new Assignment(this);
+
+    assignList[i] = new Assignment(this);
 }
 
 string Course::getCourseName(void) const
@@ -75,13 +72,12 @@ int Course::getId(void) const
 
 string Course::getMasterName(void) const
 {
-    string fullName = masterName->getFirstName() + masterName->getLastName();
-    return fullName;
+    return masterName->getFullName();
 }
 
-struct ASSIGNMENT_LIST *Course::getAssignmentList(void) const
+Assignment **Course::getAssignmentList(void)
 {
-    return aList;
+    return assignList;
 }
 
 void showAllCourses(void)
@@ -138,4 +134,63 @@ int Course::getCapacity(void) const
 int Course::getRemainedCapacity(void) const
 {
     return remainedCapacity;
+}
+
+void Course::showAllStudents(void)
+{
+    int action, i;
+    string name;
+    bool isFound;
+    for (i = 0; i < 50 && stuList[i] != nullptr; ++i)
+    {
+        cout << i + 1 << ". " << stuList[i]->getFullName() << endl;
+        cout << "Score: " << stuList[i]->getCourseScore(this) << endl;
+        cout << endl;
+    }
+    while (true)
+    {
+        cout << "Enter 0 to exit. Else to Change Students Score: ";
+        cin >> action;
+        if(action == 0)
+            return;
+     
+        cout << "Enter The Student Name That You Want To give Score: ";
+        cin >> name;
+        isFound = false;
+        for(i = 0; i < 50 && stuList[i] != nullptr; ++i)
+            if(stuList[i]->getFullName() == name)
+            {
+                isFound = true;
+                break;
+            }
+        if(isFound = true)
+            stuList[i]->setCourseScore(this);
+        else
+            cout << "Student " << name << " wasn't found. TRY AGAIN!" << endl;
+    }
+}
+
+void Course::showCourseAssignments(void)
+{
+
+}
+
+void showMasterCourses(Master *master)
+{
+    struct COURSE_LIST *cTemp = cHead;
+    int counter = 0;
+    while(cTemp)
+    {
+        if(cTemp->course->getMasterName() == master->getFullName())
+        {
+            counter++;
+            cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
+            // cout << 
+        }
+    }
+}
+
+void MakeNewCourse(Master *master)
+{
+    Course newCourse(master);
 }
