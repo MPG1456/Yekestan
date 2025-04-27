@@ -15,7 +15,6 @@ class Admin : public User
     void createNewUser(void);
     void deleteUser(void);
     void showUserInfo(void);
-    void changeUserInfo(void);
     void restoreUser(void);
     void showMasterRequests(void);
     void showAllCourses(void);

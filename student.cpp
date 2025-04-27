@@ -261,7 +261,7 @@ void showStudentInfo(void)
             cout << "Full Name: " << sTemp->student->getFullName() << endl;
             cout << "Gender: " << (sTemp->student->getGender() == true ? "Male" : "Female") << endl;
             cout << "GPA: " << sTemp->student->getGPA() << endl;
-            cout << "Status: " << (sTemp->student->isAvailable() == true ? "Available" : "Not Available") << endl;
+            cout << "Avalilablity Status: " << (sTemp->student->isAvailable() == true ? "Available" : "Not Available") << endl;
             return;
         }
         sTemp = sTemp->sNext;

@@ -183,6 +183,7 @@ void deleteMaster(void)
 
 void showMasterInfo(void)
 {
+    int action;
     string tempName;
     struct MASTER_LIST *mTemp = mHead;
     cout << "Enter Full name: ";
@@ -195,9 +196,42 @@ void showMasterInfo(void)
             cout << "Password: " << mTemp->master->getPassword() << endl;
             cout << "Full Name: " << mTemp->master->getFullName() << endl;
             cout << "Gender: " << (mTemp->master->getGender() ? "Male" : "Female") << endl;
+            cout << "Availablity Status: " << (mTemp->master->isAvailable() == true ? "Available" : "Not Available") << endl;
+            cout << "Active Status: " << (mTemp->master->isActive() == true ? "Active" : "Not Active") << endl;
+            cout << "Do you want to change Info of this User?(1 for yes, else for no): ";
+            cin >> action;
+            if(action == 1)
+                mTemp->master->changeMasterInfo();
             return;
         }
+        mTemp = mTemp->mNext;
     }
     cout << tempnam << " wan't found!" << endl;
     return;
+}
+
+void Master::changeMasterInfo(void)
+{
+    int action;
+    string strTemp;
+    int boolTemp;
+    cout << "0. EXIT" << endl;
+    cout << "1. Password" << endl;
+    cout << "2. Active Status" << endl;
+    cout << "Choose Action: ";
+    cin >> action;
+    switch(action)
+    {
+        case 0:
+            return;
+        case 1:
+            this->changePass();
+            break;
+        case 2:
+            cout << "Enter Active Status: ";
+            cin >> active;
+        default:
+            cout << "WRONG INPUT! TRY AGAIN" << endl;
+            break;   
+    }
 }
