@@ -22,6 +22,7 @@ class Student : public Person
     void giveScore(Course *);
     int getCourseScore(Course *) const;
     void setCourseScore(Course *);
+    void changeStudentInfo(void);
 };
 
 struct STUDENT_LIST
@@ -45,5 +46,6 @@ struct STUDENT_LIST *findStudent(void);
 void showStudentMenu(void);
 void deleteStudent(void);
 void showStudentInfo(void);
+void restoreStudent(void);
 
 #endif

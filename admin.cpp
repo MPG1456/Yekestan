@@ -63,19 +63,19 @@ void Admin::createNewUser(void)
         cout << "2. Create New Student" << endl;
         cout << "Choose Action: ";
         cin >> action;
-        switch(action)
+        switch (action)
         {
-            case 0:
-                return;
-            case 1:
-                createNewMaster();
-                break;
-            case 2:
-                createNewStudent();
-                break;
-            default:
-                cout << "Wrong Input! TRY AGAIN!" << endl;
-                break;               
+        case 0:
+            return;
+        case 1:
+            createNewMaster();
+            break;
+        case 2:
+            createNewStudent();
+            break;
+        default:
+            cout << "Wrong Input! TRY AGAIN!" << endl;
+            break;
         }
     }
 }
@@ -83,26 +83,26 @@ void Admin::createNewUser(void)
 void Admin::deleteUser(void)
 {
     int action;
-    while(true)
+    while (true)
     {
         cout << "0. EXIT" << endl;
         cout << "1. Delete Master" << endl;
         cout << "2. Delete Student" << endl;
         cout << "Choose The Action: ";
         cin >> action;
-        switch(action)
+        switch (action)
         {
-            case 0:
-                return;
-            case 1:
-                deleteStudent();
-                break;
-            case 2:
-                deleteMaster();
-                break;
-            default:
-                cout << "WRONG INPUT! TRY AGAIN!" << endl;
-                return;
+        case 0:
+            return;
+        case 1:
+            deleteMaster();
+            break;
+        case 2:
+            deleteStudent();
+            break;
+        default:
+            cout << "WRONG INPUT! TRY AGAIN!" << endl;
+            return;
         }
     }
 }
@@ -115,19 +115,46 @@ void Admin::showUserInfo(void)
     cout << "2. Student Info" << endl;
     cout << "Choose Operation: ";
     cin >> action;
-    switch(action)
+    switch (action)
     {
+    case 0:
+        return;
+    case 1:
+        showMasterInfo();
+        break;
+    case 2:
+        showStudentInfo();
+        break;
+    default:
+        cout << "WRONG INPUT! TRY AGAIN!" << endl;
+        break;
+    }
+}
+
+void Admin::restoreUser(void)
+{
+    int action;
+    while (true)
+    {
+        cout << "0. EXIT" << endl;
+        cout << "1. Restore Master" << endl;
+        cout << "2. Restore Student" << endl;
+        cout << "Choose The Action: ";
+        cin >> action;
+        switch (action)
+        {
         case 0:
             return;
         case 1:
-            showMasterInfo();
+            restoreMaster();
             break;
         case 2:
-            showStudentInfo();
+            restoreStudent();
             break;
         default:
             cout << "WRONG INPUT! TRY AGAIN!" << endl;
-            break;
+            return;
+        }
     }
 }
 

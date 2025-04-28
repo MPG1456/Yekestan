@@ -34,5 +34,6 @@ void showMasterMenu(void);
 void addNewAssignment(Master *);
 void deleteMaster(void);
 void showMasterInfo(void);
+void restoreMaster(void);
 
 #endif

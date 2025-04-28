@@ -269,3 +269,46 @@ void showStudentInfo(void)
     cout << tempnam << " wan't found!" << endl;
     return;
 }
+
+void Student::Student::changeStudentInfo(void)
+{
+    int action;
+    cout << "0. EXIT" << endl;
+    cout << "1. Password" << endl;
+    cout << "2. GPA" << endl;
+    cout << "Choose Action: ";
+    cin >> action;
+    switch(action)
+    {
+        case 0:
+            return;
+        case 1:
+            this->changePass();
+            break;
+        case 2:
+            cout << "Enter GPA: ";
+            cin >> GPA;
+        default:
+            cout << "WRONG INPUT! TRY AGAIN" << endl;
+            break;   
+    }
+}
+
+void restoreStudent(void)
+{
+    string tempName;
+    struct STUDENT_LIST *sTemp = sHead;
+    cout << "Enter Full Name: ";
+    cin >> tempName;
+    while (sHead)
+    {
+        if (tempName == sHead->student->getFullName())
+        {
+            sHead->student->setAvailable(true);
+            return;
+        }
+        sHead = sHead->sNext;
+    }
+    cout << tempName << " wasn't found!" << endl;
+    return;
+}

@@ -213,8 +213,6 @@ void showMasterInfo(void)
 void Master::changeMasterInfo(void)
 {
     int action;
-    string strTemp;
-    int boolTemp;
     cout << "0. EXIT" << endl;
     cout << "1. Password" << endl;
     cout << "2. Active Status" << endl;
@@ -235,3 +233,23 @@ void Master::changeMasterInfo(void)
             break;   
     }
 }
+
+void restoreMaster(void)
+{
+    string tempName;
+    struct MASTER_LIST *mTemp = mHead;
+    cout << "Enter Full Name: ";
+    cin >> tempName;
+    while (mTemp)
+    {
+        if (tempName == mTemp->master->getFullName())
+        {
+            mTemp->master->setAvailable(true);
+            return;
+        }
+        mTemp = mTemp->mNext;
+    }
+    cout << tempName << " wan't found!" << endl;
+    return;
+}
+
