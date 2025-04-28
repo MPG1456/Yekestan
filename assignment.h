@@ -18,6 +18,7 @@ private:
 
 public:
     Assignment(Course *course);
+    Assignment(string title, string description, Course *course, bool isActive);
     int getCourseId(void) const;
     Submission **getSubList(void);
     string getTitle(void) const;

@@ -75,6 +75,11 @@ string Course::getMasterName(void) const
     return masterName->getFullName();
 }
 
+Student **Course::getStuList(void)
+{
+    return stuList;
+}
+
 Assignment **Course::getAssignmentList(void)
 {
     return assignList;

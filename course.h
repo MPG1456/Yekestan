@@ -28,6 +28,7 @@ public:
     string getCourseName(void) const;
     int getId(void) const;
     string getMasterName(void) const;
+    Student **getStuList(void);
     Assignment **getAssignmentList(void);
     float getScore(void);
     void setScore(void);

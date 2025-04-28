@@ -13,6 +13,8 @@ Assignment::Assignment(Course *course) : course(course)
     cout << "Assignment Successfuly Added" << endl;
 }
 
+Assignment::Assignment(string title, string description, Course *course, bool isActive) : title(title), description(description), course(course),  
+
 int Assignment::getCourseId(void) const
 {
     return course->getId();
