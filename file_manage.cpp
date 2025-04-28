@@ -141,9 +141,13 @@ void readCourseList(ifstream &courseFile)
     MASTER_LIST *mTemp;
     STUDENT_LIST *sTemp;
     COURSE_LIST *cNew;
-    string line, name, score, capacity, remainedCapacity, masterName, stuList;
+    string line, name, score, capacity, remainedCapacity, masterName;
+    string title, description, isActive, stuList, respond;
     int idNum, capacityNum, remainedCapacityNum;
-    float scoreNum;
+    float scoreNum, subScore;
+    Student *myStu[50];
+    Submission *mySub[50];
+    Assignment *myAssign[10];
     while (getline(courseFile, line))
     {
         if (cHead == nullptr)
@@ -164,10 +168,43 @@ void readCourseList(ifstream &courseFile)
         getline(courseFile, remainedCapacity);
         getline(courseFile, masterName);   
         idNum = stoi(line);
-        scoreNum = stoi(score);
+        scoreNum = stof(score);
         capacityNum = stoi(capacity);
         remainedCapacity = stoi(remainedCapacity);
         
+        for(int i = 0; i < 50; ++i)
+        {
+            getline(courseFile, stuList);
+            if(line[0] == '#')
+                myStu[i] = nullptr;
+            else
+                myStu[i] = findStudent(stuList);
+        }
+
+        for(int i = 0; i < 10; ++i)
+        {
+            getline(courseFile, line);
+            if(line[0] == '#')
+                myAssign[i] = nullptr;
+            else
+            {
+                title = line;
+                getline(courseFile, description);
+                getline(courseFile, isActive);
+                for(int j = 0; j < 50; ++j)
+                {
+                    getline(courseFile, line);
+                    if(line[0] == '#')
+                        mySub[i] = new Submission;
+                    else
+                    {
+                        getline(courseFile, respond);
+                        getline(courseFile, score);
+                        mySub[i] = new Submission(findStudent(line), respond, stof(score));
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -219,11 +256,8 @@ void submitInformation(void)
                         delete[] tempSub[j];
                     }
                     else
-                    {
                         courseFile << "#" << endl;
-                        courseFile << "#" << endl;
-                        courseFile << "#" << endl;
-                    }
+
                 delete[] tempAssign[i];
             }
             else

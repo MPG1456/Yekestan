@@ -83,6 +83,21 @@ struct STUDENT_LIST *findStudent(void)
     return sTemp;
 }
 
+Student *findStudent(string myStu)
+{
+    struct STUDENT_LIST *sTemp;
+    sTemp = sHead;
+    while (sTemp)
+    {
+        if (sTemp->student->getFullName().compare(myStu) == 0)
+            break;
+        else
+            sTemp = sTemp->sNext;
+    }
+
+    return sTemp->student;
+}
+
 Student::Student(string username, string password, string firstName, string lastName, bool available, bool gender, float GPA, float *scores) : Person(username, password, firstName, lastName, available, gender)
 {
     this->GPA = GPA;

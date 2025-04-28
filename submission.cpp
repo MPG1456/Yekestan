@@ -2,9 +2,19 @@
 
 Submission::Submission(Student *student) : student(student)
 {
-    score = 0;
+    score = -1;
     respond = "No Respond Has Given Yet!";
 }
+
+Submission::Submission()
+{
+    student = nullptr;
+    score = -1;
+    respond = "No Respond Has Given Yet!";
+}
+
+Submission::Submission(Student *myStu, string respond, float score) : student(myStu), respond(respond), score(score)
+{}
 
 void Submission::setRespond()
 {

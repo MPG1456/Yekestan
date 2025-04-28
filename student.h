@@ -44,6 +44,7 @@ extern STUDENT_LIST *sHead;
 struct STUDENT_LIST *createNewStudent();
 void studentOperation(struct STUDENT_LIST *thisUser);
 struct STUDENT_LIST *findStudent(void);
+Student *findStudent(string myStu);
 void showStudentMenu(void);
 void deleteStudent(void);
 void showStudentInfo(void);

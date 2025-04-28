@@ -75,7 +75,7 @@ struct MASTER_LIST *findMaster(void)
     cin >> tempUsername;
     while (mTemp)
     {
-        if (mTemp->master->getUsername().compare(tempUsername) == 0)
+        if (mTemp->master->getFullName().compare(tempUsername) == 0)
             break;
         else
             mTemp = mTemp->mNext;
@@ -84,7 +84,7 @@ struct MASTER_LIST *findMaster(void)
     return mTemp;
 }
 
-struct MASTER_LIST *findMaster(string myMaster)
+Master *findMaster(string myMaster)
 {
     struct MASTER_LIST *mTemp;
     mTemp = mHead;
@@ -96,7 +96,7 @@ struct MASTER_LIST *findMaster(string myMaster)
             mTemp = mTemp->mNext;
     }
 
-    return mTemp;
+    return mTemp->master;
 }
 
 Master::Master(string username, string password, string firstName, string lastName, bool available, bool gender, bool active) : Person(username, password, firstName, lastName, available, gender)
