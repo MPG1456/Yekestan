@@ -248,6 +248,7 @@ void deleteStudent(void)
 
 void showStudentInfo(void)
 {
+    int action;
     string tempName;
     struct STUDENT_LIST *sTemp = sHead;
     cout << "Enter Full name: ";
@@ -262,6 +263,10 @@ void showStudentInfo(void)
             cout << "Gender: " << (sTemp->student->getGender() == true ? "Male" : "Female") << endl;
             cout << "GPA: " << sTemp->student->getGPA() << endl;
             cout << "Avalilablity Status: " << (sTemp->student->isAvailable() == true ? "Available" : "Not Available") << endl;
+            cout << "Do you want to change Info of this User?(1 for yes, else for no): ";
+            cin >> action;
+            if(action == 1)
+                sTemp->student->changeStudentInfo();
             return;
         }
         sTemp = sTemp->sNext;
@@ -312,3 +317,4 @@ void restoreStudent(void)
     cout << tempName << " wasn't found!" << endl;
     return;
 }
+

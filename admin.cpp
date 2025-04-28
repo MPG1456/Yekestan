@@ -31,7 +31,24 @@ void adminOperation(bool isAdmin)
         cin >> action;
         switch (action)
         {
-        case 8:
+        case 1:
+            admin.createNewUser();
+            break;
+        case 2:
+            admin.deleteUser();
+            break;
+        case 3:
+            admin.showUserInfo();
+            break;
+        case 4:
+            admin.restoreUser();
+            break;
+        case 5:
+            admin.showMasterRequests();
+            break;
+        case 6:
+            
+        case 7:
             return;
         default:
             cout << "Wrone Input! TRY AGAIN" << endl;
@@ -44,12 +61,11 @@ void showAdminMenu(void)
 {
     cout << "1. Create New User" << endl;
     cout << "2. Delete a User" << endl;
-    cout << "3. Show User Information" << endl;
-    cout << "4. Update User Information" << endl;
-    cout << "5. Restore Deleted User" << endl;
-    cout << "6. Show New Master Requests" << endl;
-    cout << "7. Show All Courses" << endl;
-    cout << "8. Sign Out" << endl;
+    cout << "3. Show and Update User Information" << endl;
+    cout << "4. Restore Deleted User" << endl;
+    cout << "5. Show New Master Requests" << endl;
+    cout << "6. Show All Courses" << endl;
+    cout << "7. Sign Out" << endl;
     cout << "Choose Desired Action: ";
 }
 
@@ -158,3 +174,49 @@ void Admin::restoreUser(void)
     }
 }
 
+void Admin::showMasterRequests(void)
+{
+    int action;
+    struct MASTER_LIST *mTemp = mHead;
+    while (mTemp)
+    {
+        if (mTemp->master->isActive() == false)
+        {
+            cout << mTemp->master->getFullName() << endl;
+            cout << mTemp->master->getGender() << endl;
+            cout << "Enter 0 to Show Next, 1 to Active This Master: ";
+            cin >> action;
+            switch (action)
+            {
+            case 0:
+                break;
+                ;
+            case 1:
+                mTemp->master->setActive(true);
+                break;
+            default:
+                cout << "WRONG INPUT! showing next Request." << endl;
+                break;
+            }
+        }
+        mTemp = mTemp->mNext;
+    }
+    cout << "~~~~~~End of Requests~~~~~~" << endl << endl;
+}
+
+void Admin::showAllCourses(void)
+{
+    struct COURSE_LIST *cTemp = cHead;
+    while(cTemp)
+    {
+        cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
+        cout << "Capacity: " << cTemp->course->getCapacity() << endl;
+        cout << "Remained Capacity: " << cTemp->course->getRemainedCapacity() << endl;
+        cout << "Master: " << cTemp->course->getMasterName() << endl;
+        cout << "Scores Students Have Given To this Course: " << cTemp->course->getScore() << endl;
+        cout << endl;
+        cTemp = cTemp->cNext;
+    }
+    cout << "~~~~~~~End of Courses~~~~~~~" << endl;
+    cout << endl;
+}

@@ -253,3 +253,8 @@ void restoreMaster(void)
     return;
 }
 
+void Master::setActive(bool activeStatus)
+{
+    active = activeStatus;
+}
+

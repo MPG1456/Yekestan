@@ -172,7 +172,13 @@ void Course::showAllStudents(void)
 
 void Course::showCourseAssignments(void)
 {
-
+    for(int i = 0; i < 10 && assignList[i] != nullptr; ++i)
+    {
+        cout << assignList[i]->getCourseId() << ". " << assignList[i]->getTitle() << endl;
+        cout << "Description: " << assignList[i]->getDescription() << endl;
+        cout << "Active Status: " << assignList[i]->getIsActive() << endl;
+        cout << endl;
+    }
 }
 
 void showMasterCourses(Master *master)

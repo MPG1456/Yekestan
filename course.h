@@ -12,8 +12,8 @@ class Course
 {
 private:
     int id;
-    float score;
     string name;
+    float score;
     int capacity;
     int remainedCapacity;
     Master *masterName;

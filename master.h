@@ -17,6 +17,7 @@ public:
     bool isActive(void) const;
     void showMasterCourses(void);
     void changeMasterInfo(void);
+    void setActive(bool activeStatus);
 };
 
 struct MASTER_LIST
