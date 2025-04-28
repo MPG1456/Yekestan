@@ -193,7 +193,7 @@ void deleteMaster(void)
         }
         mTemp = mTemp->mNext;
     }
-    cout << tempName << " wan't found!" << endl;
+    cout << tempName << " wans't found!" << endl;
     return;
 }
 

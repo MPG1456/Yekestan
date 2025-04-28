@@ -195,7 +195,7 @@ void readCourseList(ifstream &courseFile)
                 {
                     getline(courseFile, line);
                     if(line[0] == '#')
-                        mySub[i] = new Submission;
+                        mySub[i] = nullptr;
                     else
                     {
                         getline(courseFile, respond);
@@ -203,9 +203,13 @@ void readCourseList(ifstream &courseFile)
                         mySub[i] = new Submission(findStudent(line), respond, stof(score));
                     }
                 }
+                myAssign[i] = new Assignment(title, description, mySub, stoi(isActive));
             }
         }
+        cNew->course = new Course(idNum, name, scoreNum, capacityNum, remainedCapacityNum, findMaster(masterName), myStu, myAssign);
     }
+    Course::getCourseCount(idNum);
+    cout << "Course File Read Completely :-)" << endl;
 }
 
 void submitInformation(void)

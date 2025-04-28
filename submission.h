@@ -16,7 +16,6 @@ private:
     float score;
 public:
     Submission(Student *student);
-    Submission();
     Submission(Student *, string, float);
     void setRespond(void);
     float getScore(void) const;

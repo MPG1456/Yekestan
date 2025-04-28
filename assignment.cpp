@@ -13,7 +13,12 @@ Assignment::Assignment(Course *course) : course(course)
     cout << "Assignment Successfuly Added" << endl;
 }
 
-Assignment::Assignment(string title, string description, Course *course, bool isActive) : title(title), description(description), course(course),  
+Assignment::Assignment(string title, string description, Submission **mySub, bool isActive) : title(title), description(description), isActive(isActive)
+{
+    for(int i = 0; i < 50; ++i)
+        subList[i] = mySub[i];
+    course = nullptr;
+}
 
 int Assignment::getCourseId(void) const
 {
@@ -53,5 +58,10 @@ void Assignment::setDescription(string newDescription)
 void Assignment::setActive(bool newActiveMode)
 {
     isActive = newActiveMode;
+}
+
+void Assignment::setCourse(Course *course)
+{
+    this->course = course;
 }
 

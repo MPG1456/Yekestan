@@ -13,14 +13,14 @@ Course::Course(Master *masterName) : masterName(masterName)
     cout << "Please Enter The Capacity Of This Course: ";
     cin >> capacity;
     remainedCapacity = capacity;
-    for(int i = 0; i < 50; ++i)
+    for (int i = 0; i < 50; ++i)
         stuList[i] = nullptr;
     cout << "Do You Want to Add Assignment To This Course? (1 for yes, 0 for no): ";
     bool operation;
     if (operation == true)
         addAssignment();
     else
-        for(int i = 0; i < 10; ++i)
+        for (int i = 0; i < 10; ++i)
             assignList[i] = nullptr;
 
     struct COURSE_LIST *cTemp = cHead;
@@ -42,10 +42,21 @@ Course::Course(Master *masterName) : masterName(masterName)
 
 Course::Course(int id, string name, float score, int capacity, int rCapacity, Master *masterName, Student **stuList, Assignment **assginList) : id(id), name(name), score(score), capacity(capacity), remainedCapacity(rCapacity), masterName(masterName)
 {
-    for(int i = 0; i < 50; ++i)
+    struct ENROLLED_COURSES *eTemp;
+    Submission **sTemp;
+    int i, j;
+    for (i = 0; i < 50; ++i)
+    {
         this->stuList[i] = stuList[i];
-    for(int i = 0; i < 10; ++i)
+        eTemp = stuList[i]->getCourses();
+        for(j = 0; j < 10 && eTemp[j].course != nullptr; ++j);
+        eTemp[j].course = this;
+    }
+    for (i = 0; i < 10; ++i)
+    {
         this->assignList[i] = assignList[i];
+        this->assignList[i]->setCourse(this);
+    }
 }
 
 int Course::getCourseCount(int setNum)
@@ -164,19 +175,19 @@ void Course::showAllStudents(void)
     {
         cout << "Enter 0 to exit. Else to Change Students Score: ";
         cin >> action;
-        if(action == 0)
+        if (action == 0)
             return;
-     
+
         cout << "Enter The Student Name That You Want To give Score: ";
         cin >> name;
         isFound = false;
-        for(i = 0; i < 50 && stuList[i] != nullptr; ++i)
-            if(stuList[i]->getFullName() == name)
+        for (i = 0; i < 50 && stuList[i] != nullptr; ++i)
+            if (stuList[i]->getFullName() == name)
             {
                 isFound = true;
                 break;
             }
-        if(isFound = true)
+        if (isFound = true)
             stuList[i]->setCourseScore(this);
         else
             cout << "Student " << name << " wasn't found. TRY AGAIN!" << endl;
@@ -185,7 +196,7 @@ void Course::showAllStudents(void)
 
 void Course::showCourseAssignments(void)
 {
-    for(int i = 0; i < 10 && assignList[i] != nullptr; ++i)
+    for (int i = 0; i < 10 && assignList[i] != nullptr; ++i)
     {
         cout << assignList[i]->getCourseId() << ". " << assignList[i]->getTitle() << endl;
         cout << "Description: " << assignList[i]->getDescription() << endl;
