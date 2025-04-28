@@ -40,6 +40,14 @@ Course::Course(Master *masterName) : masterName(masterName)
     cTemp->course = this;
 }
 
+Course::Course(int id, string name, float score, int capacity, int rCapacity, Master *masterName, Student **stuList, Assignment **assginList) : id(id), name(name), score(score), capacity(capacity), remainedCapacity(rCapacity), masterName(masterName)
+{
+    for(int i = 0; i < 50; ++i)
+        this->stuList[i] = stuList[i];
+    for(int i = 0; i < 10; ++i)
+        this->assignList[i] = assignList[i];
+}
+
 int Course::getCourseCount(int setNum)
 {
     courseCount += setNum;
@@ -185,21 +193,6 @@ void Course::showCourseAssignments(void)
         cout << endl;
     }
 }
-
-// void showMasterCourses(Master *master)
-// {
-//     struct COURSE_LIST *cTemp = cHead;
-//     int counter = 0;
-//     while(cTemp)
-//     {
-//         if(cTemp->course->getMasterName() == master->getFullName())
-//         {
-//             counter++;
-//             cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
-//             // cout << 
-//         }
-//     }
-// }
 
 void MakeNewCourse(Master *master)
 {

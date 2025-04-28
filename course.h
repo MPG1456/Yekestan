@@ -23,6 +23,7 @@ private:
 
 public:
     Course(Master *masterName);
+    Course(int id, string name, float score, int capacity, int rCapacity, Master *masterName, Student **stuList, Assignment **assginList);
     static int getCourseCount(int setCount = 0);
     void addAssignment(void);
     string getCourseName(void) const;

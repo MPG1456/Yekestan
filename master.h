@@ -31,6 +31,7 @@ extern MASTER_LIST *mHead;
 struct MASTER_LIST *createNewMaster();
 void masterOperation(struct MASTER_LIST *);
 struct MASTER_LIST *findMaster(void);
+struct MASTER_LIST *findMaster(string myMaster);
 void showMasterMenu(void);
 void addNewAssignment(Master *);
 void deleteMaster(void);

@@ -84,6 +84,21 @@ struct MASTER_LIST *findMaster(void)
     return mTemp;
 }
 
+struct MASTER_LIST *findMaster(string myMaster)
+{
+    struct MASTER_LIST *mTemp;
+    mTemp = mHead;
+    while (mTemp)
+    {
+        if (mTemp->master->getFullName().compare(myMaster) == 0)
+            break;
+        else
+            mTemp = mTemp->mNext;
+    }
+
+    return mTemp;
+}
+
 Master::Master(string username, string password, string firstName, string lastName, bool available, bool gender, bool active) : Person(username, password, firstName, lastName, available, gender)
 {
     this->active = active;

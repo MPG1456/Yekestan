@@ -141,7 +141,7 @@ void readCourseList(ifstream &courseFile)
     MASTER_LIST *mTemp;
     STUDENT_LIST *sTemp;
     COURSE_LIST *cNew;
-    string line, name, score, capacity, remainedCapacity, masterNmae, stuList;
+    string line, name, score, capacity, remainedCapacity, masterName, stuList;
     int idNum, capacityNum, remainedCapacityNum;
     float scoreNum;
     while (getline(courseFile, line))
@@ -158,7 +158,16 @@ void readCourseList(ifstream &courseFile)
             cNew = cNew->cNext;
             cNew->cNext = nullptr;
         }
+        getline(courseFile, name);
+        getline(courseFile, score);
+        getline(courseFile, capacity);
+        getline(courseFile, remainedCapacity);
+        getline(courseFile, masterName);   
         idNum = stoi(line);
+        scoreNum = stoi(score);
+        capacityNum = stoi(capacity);
+        remainedCapacity = stoi(remainedCapacity);
+        
     }
 }
 
