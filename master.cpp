@@ -84,9 +84,10 @@ struct MASTER_LIST *findMaster(void)
     return mTemp;
 }
 
-Master::Master(string username, string password, string firstName, string lastName, bool gender, bool active) : Person(username, password, firstName, lastName, gender)
+Master::Master(string username, string password, string firstName, string lastName, bool available, bool gender, bool active) : Person(username, password, firstName, lastName, available, gender)
 {
     this->active = active;
+    this->available = available;
 }
 
 bool Master::isActive(void) const

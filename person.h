@@ -13,7 +13,7 @@ class Person : public User
     bool available;
     public:
     Person();
-    Person(string username, string password, string firstName, string lastName, bool gender);
+    Person(string username, string password, string firstName, string lastName, bool available, bool gender);
     string getFirstName(void) const;
     string getLastName(void) const;
     string getFullName(void) const;

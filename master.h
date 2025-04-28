@@ -13,7 +13,7 @@ class Master : public Person
 
 public:
     Master();
-    Master(string username, string password, string firstName, string lastName, bool gender, bool active);
+    Master(string username, string password, string firstName, string lastName, bool available, bool gender, bool active);
     bool isActive(void) const;
     void showMasterCourses(void);
     void changeMasterInfo(void);

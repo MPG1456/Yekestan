@@ -14,7 +14,7 @@ class Student : public Person
 
     public:
     Student();
-    Student(string username, string password, string firstName, string lastName, bool gender, float GPA);
+    Student(string username, string password, string firstName, string lastName, bool available, bool gender, float GPA, float *scores);
     float getGPA(void) const;
     void showMyCourses(void);
     bool studentCourseAction(void);
@@ -23,6 +23,7 @@ class Student : public Person
     int getCourseScore(Course *) const;
     void setCourseScore(Course *);
     void changeStudentInfo(void);
+    struct ENROLLED_COURSES *getCourses(void);
 };
 
 struct STUDENT_LIST

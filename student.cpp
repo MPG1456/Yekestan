@@ -6,8 +6,11 @@ Student::Student()
 {
     GPA = -1;
     setAvailable(true);
-    for(int i = 0; i < 10; ++i)
+    for (int i = 0; i < 10; ++i)
+    {
         myCourses[i].score = -1;
+        myCourses[i].course = nullptr;
+    }
 }
 
 struct STUDENT_LIST *createNewStudent(void)
@@ -80,9 +83,14 @@ struct STUDENT_LIST *findStudent(void)
     return sTemp;
 }
 
-Student::Student(string username, string password, string firstName, string lastName, bool gender, float GPA) : Person(username, password, firstName, lastName, gender)
+Student::Student(string username, string password, string firstName, string lastName, bool available, bool gender, float GPA, float *scores) : Person(username, password, firstName, lastName, available, gender)
 {
     this->GPA = GPA;
+    for (int i = 0; i < 10; ++i)
+    {
+        this->myCourses[i].score = scores[i];
+        this->myCourses[i].course = nullptr;
+    }
 }
 
 void showStudentMenu(void)
@@ -113,7 +121,8 @@ void Student::showMyCourses(void)
         cout << myCourses[i].course->getMasterName() << endl;
     }
 
-    while (studentCourseAction() == false);
+    while (studentCourseAction() == false)
+        ;
 }
 
 bool Student::studentCourseAction(void)
@@ -124,7 +133,8 @@ bool Student::studentCourseAction(void)
     if (action == 0)
         return true;
 
-    for (i = 0; i < 10 && myCourses[i].course != nullptr && myCourses[i].course->getId() != action; ++i);
+    for (i = 0; i < 10 && myCourses[i].course != nullptr && myCourses[i].course->getId() != action; ++i)
+        ;
 
     if (i == 10 || myCourses[i].course == nullptr)
     {
@@ -159,7 +169,7 @@ void Student::showMyAssignments(Course *myCourse)
     int action, i, j;
     Assignment **assignList = myCourse->getAssignmentList();
     Submission **subTemp;
-    if(assignList[0] == nullptr)
+    if (assignList[0] == nullptr)
     {
         cout << "No Assignments Yet!" << endl;
         return;
@@ -184,7 +194,6 @@ void Student::showMyAssignments(Course *myCourse)
                     cin >> action;
                     if (action == 1)
                         subTemp[j]->setRespond();
-                    
                 }
                 else
                     cout << "Not Active" << endl;
@@ -211,8 +220,8 @@ void Student::giveScore(Course *course)
 
 int Student::getCourseScore(Course *course) const
 {
-    for(int i = 0; i < 10; ++i)
-        if(myCourses[i].course == course)
+    for (int i = 0; i < 10; ++i)
+        if (myCourses[i].course == course)
             return myCourses[i].score;
     return -1;
 }
@@ -220,8 +229,8 @@ int Student::getCourseScore(Course *course) const
 void Student::setCourseScore(Course *course)
 {
     int i;
-    for(i = 0; i < 10; ++i)
-        if(myCourses[i].course == course)
+    for (i = 0; i < 10; ++i)
+        if (myCourses[i].course == course)
             break;
     cout << "Enter Students Score: " << endl;
     cin >> myCourses[i].score;
@@ -253,9 +262,9 @@ void showStudentInfo(void)
     struct STUDENT_LIST *sTemp = sHead;
     cout << "Enter Full name: ";
     cin >> tempName;
-    while(sTemp)
+    while (sTemp)
     {
-        if(sTemp->student->getFullName() == tempName)
+        if (sTemp->student->getFullName() == tempName)
         {
             cout << "Username: " << sTemp->student->getUsername() << endl;
             cout << "Password: " << sTemp->student->getPassword() << endl;
@@ -265,7 +274,7 @@ void showStudentInfo(void)
             cout << "Avalilablity Status: " << (sTemp->student->isAvailable() == true ? "Available" : "Not Available") << endl;
             cout << "Do you want to change Info of this User?(1 for yes, else for no): ";
             cin >> action;
-            if(action == 1)
+            if (action == 1)
                 sTemp->student->changeStudentInfo();
             return;
         }
@@ -283,19 +292,19 @@ void Student::Student::changeStudentInfo(void)
     cout << "2. GPA" << endl;
     cout << "Choose Action: ";
     cin >> action;
-    switch(action)
+    switch (action)
     {
-        case 0:
-            return;
-        case 1:
-            this->changePass();
-            break;
-        case 2:
-            cout << "Enter GPA: ";
-            cin >> GPA;
-        default:
-            cout << "WRONG INPUT! TRY AGAIN" << endl;
-            break;   
+    case 0:
+        return;
+    case 1:
+        this->changePass();
+        break;
+    case 2:
+        cout << "Enter GPA: ";
+        cin >> GPA;
+    default:
+        cout << "WRONG INPUT! TRY AGAIN" << endl;
+        break;
     }
 }
 
@@ -318,3 +327,7 @@ void restoreStudent(void)
     return;
 }
 
+struct ENROLLED_COURSES *Student::getCourses(void)
+{
+    return this->myCourses;
+}
