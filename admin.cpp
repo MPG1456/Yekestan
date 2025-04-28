@@ -47,7 +47,8 @@ void adminOperation(bool isAdmin)
             admin.showMasterRequests();
             break;
         case 6:
-            
+            admin.showAllCourses();
+            break;
         case 7:
             return;
         default:
@@ -220,3 +221,4 @@ void Admin::showAllCourses(void)
     cout << "~~~~~~~End of Courses~~~~~~~" << endl;
     cout << endl;
 }
+

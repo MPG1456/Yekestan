@@ -55,7 +55,7 @@ void masterOperation(struct MASTER_LIST *thisUser)
             makeNewCourse(thisUser->master);
             break;
         case 3:
-            showMasterCourses(thisUser->master);
+            thisUser->master->showMasterCourses();
             break;
         case 4:
             return;

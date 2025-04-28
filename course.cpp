@@ -181,20 +181,20 @@ void Course::showCourseAssignments(void)
     }
 }
 
-void showMasterCourses(Master *master)
-{
-    struct COURSE_LIST *cTemp = cHead;
-    int counter = 0;
-    while(cTemp)
-    {
-        if(cTemp->course->getMasterName() == master->getFullName())
-        {
-            counter++;
-            cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
-            // cout << 
-        }
-    }
-}
+// void showMasterCourses(Master *master)
+// {
+//     struct COURSE_LIST *cTemp = cHead;
+//     int counter = 0;
+//     while(cTemp)
+//     {
+//         if(cTemp->course->getMasterName() == master->getFullName())
+//         {
+//             counter++;
+//             cout << cTemp->course->getId() << ". " << cTemp->course->getCourseName() << endl;
+//             // cout << 
+//         }
+//     }
+// }
 
 void MakeNewCourse(Master *master)
 {

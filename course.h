@@ -46,6 +46,7 @@ struct COURSE_LIST
 extern COURSE_LIST *cHead;
 
 void showAllCourses(void);
-void showMasterCourses(Master *);
+// void showMasterCourses(Master *);
 void makeNewCourse(Master *);
+
 #endif
