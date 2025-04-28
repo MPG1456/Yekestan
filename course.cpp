@@ -1,6 +1,6 @@
 #include "course.h"
 
-static int courseCount = 1;
+int Course::courseCount = 1;
 
 COURSE_LIST *cHead = nullptr;
 
@@ -205,7 +205,7 @@ void Course::showCourseAssignments(void)
     }
 }
 
-void MakeNewCourse(Master *master)
+void makeNewCourse(Master *master)
 {
     Course newCourse(master);
 }

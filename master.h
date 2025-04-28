@@ -3,6 +3,8 @@
 
 #include "person.h"
 #include "course.h"
+#include "assignment.h"
+#include "submission.h"
 
 using namespace std;
 

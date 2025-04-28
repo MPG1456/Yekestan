@@ -36,6 +36,11 @@ void studentOperation(struct STUDENT_LIST *thisUser)
         cout << "There is no Such Username!" << endl;
         return;
     }
+    if(thisUser->student->isAvailable() == false)
+    {
+        cout << "This user is Deleted!" << endl;
+        return;
+    }
     if (checkPass(thisUser->student->getPassword()) == false)
         return;
 

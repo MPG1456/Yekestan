@@ -2,12 +2,14 @@
 #define COURSE_H
 
 #include <iostream>
-#include "assignment.h"
 #include "master.h"
 #include "student.h"
 
 using namespace std;
 
+class Assignment;
+class Master;
+class Student;
 class Course
 {
 private:
@@ -48,7 +50,6 @@ struct COURSE_LIST
 extern COURSE_LIST *cHead;
 
 void showAllCourses(void);
-// void showMasterCourses(Master *);
 void makeNewCourse(Master *);
 
 #endif

@@ -4,8 +4,12 @@
 #include <iostream>
 #include <string.h>
 #include "course.h"
+#include "submission.h"
 
 using namespace std;
+
+class Course;
+class Submission;
 
 class Assignment
 {

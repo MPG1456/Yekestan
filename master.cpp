@@ -27,7 +27,22 @@ struct MASTER_LIST *createNewMaster()
 void masterOperation(struct MASTER_LIST *thisUser)
 {
     if (thisUser == nullptr)
+    {
+        cout << "There is no Such Username!" << endl;
         return;
+    }
+
+    if (thisUser->master->isAvailable() == false)
+    {
+        cout << "This user is Deleted!" << endl;
+        return;
+    }
+
+    if(thisUser->master->isActive() == false)
+    {
+        cout << "This Master hasn't Approved Yet!" << endl;
+        return;
+    }
 
     if (checkPass(thisUser->master->getPassword()) == false)
         return;
@@ -204,9 +219,9 @@ void showMasterInfo(void)
     struct MASTER_LIST *mTemp = mHead;
     cout << "Enter Full name: ";
     cin >> tempName;
-    while(mTemp)
+    while (mTemp)
     {
-        if(mTemp->master->getFullName() == tempName)
+        if (mTemp->master->getFullName() == tempName)
         {
             cout << "Username: " << mTemp->master->getUsername() << endl;
             cout << "Password: " << mTemp->master->getPassword() << endl;
@@ -216,7 +231,7 @@ void showMasterInfo(void)
             cout << "Active Status: " << (mTemp->master->isActive() == true ? "Active" : "Not Active") << endl;
             cout << "Do you want to change Info of this User?(1 for yes, else for no): ";
             cin >> action;
-            if(action == 1)
+            if (action == 1)
                 mTemp->master->changeMasterInfo();
             return;
         }
@@ -234,19 +249,19 @@ void Master::changeMasterInfo(void)
     cout << "2. Active Status" << endl;
     cout << "Choose Action: ";
     cin >> action;
-    switch(action)
+    switch (action)
     {
-        case 0:
-            return;
-        case 1:
-            this->changePass();
-            break;
-        case 2:
-            cout << "Enter Active Status: ";
-            cin >> active;
-        default:
-            cout << "WRONG INPUT! TRY AGAIN" << endl;
-            break;   
+    case 0:
+        return;
+    case 1:
+        this->changePass();
+        break;
+    case 2:
+        cout << "Enter Active Status: ";
+        cin >> active;
+    default:
+        cout << "WRONG INPUT! TRY AGAIN" << endl;
+        break;
     }
 }
 
@@ -273,4 +288,3 @@ void Master::setActive(bool activeStatus)
 {
     active = activeStatus;
 }
-

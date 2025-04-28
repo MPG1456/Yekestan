@@ -12,8 +12,6 @@ void openFiles(void);
 void readStudentList(ifstream &studentFile);
 void readMasterList(ifstream &masterFile);
 void readCourseList(ifstream &courseFile);
-void readAssignmentList(ifstream &assignmentFile);
-void readSubmissionList(ifstream &submissionFile);
 void submitInformation(void);
 
 #endif

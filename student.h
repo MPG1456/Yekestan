@@ -3,9 +3,18 @@
 
 #include "person.h"
 #include "course.h"
+#include "assignment.h"
 #include "submission.h"
-
 using namespace std;
+
+class Course;
+
+struct ENROLLED_COURSES
+{
+    Course *course;
+    float score;
+    struct ENROLLE_COURSES *eNext;
+};
 
 class Student : public Person
 {
@@ -30,13 +39,6 @@ struct STUDENT_LIST
 {
     Student *student;
     struct STUDENT_LIST *sNext;
-};
-
-struct ENROLLED_COURSES
-{
-    Course *course;
-    float score;
-    struct ENROLLE_COURSES *eNext;
 };
 
 extern STUDENT_LIST *sHead;

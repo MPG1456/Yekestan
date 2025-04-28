@@ -2,11 +2,11 @@
 #define SUBMISSION_H
 
 #include <iostream>
-#include "assignment.h"
-#include "course.h"
 #include "student.h"
 
 using namespace std;
+
+class Student;
 
 class Submission
 {
